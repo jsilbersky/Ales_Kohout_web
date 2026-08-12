@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+<html lang="cs" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aleš Kohout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+--bg:#f4f2ef;
+--bg2:#eceae6;
+--bg3:#e1ddd7;
+--text:#1a1916;
+--text2:#57534b;
+--text3:#96918a;
+--accent:#8b6f47;
+--accent2:#c4a882;
+--border:#d5d1cb;
+--border2:#c5c0b8;
+--nav-h:64px;
+--max-w:1400px;
+--serif:'Cormorant Garamond',Georgia,serif;
+--sans:'DM Sans',sans-serif;
+}
+
+[data-theme="dark"]{
+--bg:#0f1520;
+--bg2:#141d2e;
+--bg3:#1c2740;
+--text:#e4e8f0;
+--text2:#9aaabf;
+--text3:#576678;
+--accent:#c4a882;
+--accent2:#8b6f47;
+--border:#1e2e45;
+--border2:#273d56;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;transition:background .3s,color .3s;min-height:100vh}
+section{scroll-margin-top:var(--nav-h);padding:5rem 3rem;max-width:var(--max-w);margin-inline:auto}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 max(1.5rem,calc((100vw - var(--max-w)) / 2 + 3rem));background:var(--bg);border-bottom:1px solid var(--border);z-index:100;transition:background .3s,border-color .3s}
+.nav-logo{font-family:var(--serif);font-size:1.25rem;font-weight:300;letter-spacing:.08em;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent);font-style:italic}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.8rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-controls{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.btn-icon{background:none;border:1px solid var(--border2);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);transition:all .2s;font-size:.75rem;font-family:var(--sans)}
+.btn-icon:hover{border-color:var(--accent);color:var(--accent)}
+.lang-active{color:var(--accent)!important;border-color:var(--accent)!important}
+.btn-menu{display:none;background:none;border:1px solid var(--border2);border-radius:2px;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;padding:0;transition:border-color .2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.btn-menu:hover{border-color:var(--accent)}
+.btn-menu span{display:block;width:16px;height:1px;background:var(--text2);transition:all .3s}
+.btn-menu:hover span{background:var(--accent)}
+.btn-menu.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.btn-menu.open span:nth-child(2){opacity:0}
+.btn-menu.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* MOBILE MENU */
+.mobile-menu{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:99;padding:0 1.5rem;gap:0;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease,background .3s}
+.mobile-menu.open{max-height:400px;padding:1.5rem 1.5rem 2rem}
+.mobile-menu a{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);text-decoration:none;padding:.9rem 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--accent)}
+
+/* DIVIDER */
+.section-divider{height:1px;background:var(--border);max-width:calc(var(--max-w) - 6rem);margin-inline:auto}
+
+/* HERO */
+.hero{padding-top:calc(var(--nav-h) + 5rem);padding-bottom:5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;min-height:90vh}
+.hero-eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--accent)}
+.hero-name{font-family:var(--serif);font-size:clamp(3rem,6vw,5rem);font-weight:300;line-height:1.05;letter-spacing:-.01em;color:var(--text);margin-bottom:1.5rem}
+.hero-name em{font-style:italic;color:var(--accent)}
+.hero-roles{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.role-tag{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border:1px solid var(--border2);border-radius:2rem;color:var(--text2);background:transparent}
+.hero-desc{font-size:.95rem;color:var(--text2);line-height:1.8;max-width:38ch;margin-bottom:2.5rem;font-weight:300}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{padding:.75rem 2rem;background:var(--accent);color:var(--bg);border:none;border-radius:2rem;font-family:var(--sans);font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-primary:hover{background:var(--text);transform:translateY(-1px)}
+.btn-secondary{padding:.75rem 2rem;background:transparent;color:var(--text2);border:1px solid var(--border2);border-radius:2rem;font-family:var(--sans);font-size:.8rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.hero-visual{position:relative;aspect-ratio:3/4;background:var(--bg2);border-radius:2px;overflow:hidden;border:1px solid var(--border)}
+.hero-img-placeholder{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:flex-start;padding:2rem}
+.hero-caption{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);line-height:1.4}
+.hero-accent-line{position:absolute;top:1.5rem;right:1.5rem;width:3rem;height:3rem;border-top:1px solid var(--accent);border-right:1px solid var(--accent)}
+
+/* SECTIONS base */
+.section-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:3rem;display:flex;align-items:center;gap:.75rem}
+.section-label::before{content:'';display:block;width:1.5rem;height:1px;background:var(--accent)}
+.section-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.2;color:var(--text);margin-bottom:1rem}
+.section-title em{font-style:italic;color:var(--accent)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem}
+.about-text p{font-size:.95rem;color:var(--text2);line-height:1.9;margin-bottom:1.2rem;font-weight:300}
+.about-text p:first-child{color:var(--text);font-weight:400}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.stat-item{padding:1.5rem;border:1px solid var(--border);border-radius:2px}
+.stat-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--accent);line-height:1}
+.stat-label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:.5rem}
+
+/* TVORBA – video karty 2 sloupce */
+.works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.work-card{border:1px solid var(--border);border-radius:2px;overflow:hidden;background:var(--bg2);transition:all .3s;cursor:pointer}
+.work-card:hover{border-color:var(--accent2);transform:translateY(-3px)}
+.work-thumb{aspect-ratio:16/9;background:var(--bg3);position:relative;overflow:hidden}
+.work-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(25%) saturate(1.1) brightness(.85);transition:filter .45s}
+.work-card:hover .work-thumb img{filter:sepia(8%) saturate(1) brightness(.97)}
+.work-play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.22);border:none;cursor:pointer;width:100%;opacity:0;transition:opacity .3s}
+.work-play-btn span{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;color:#1a1916;font-size:1rem;padding-left:4px;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.work-card:hover .work-play-btn,.work-play-btn:focus{opacity:1}
+@media(hover:none){.work-play-btn{opacity:.7}}
+.work-thumb.embedded{display:block;padding:0}
+.work-thumb.embedded iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.work-info{padding:1.25rem}
+.work-year{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.work-title{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.5rem;line-height:1.25}
+.work-desc{font-size:.95rem;color:var(--text3);line-height:1.65}
+.work-card--featured{grid-column:1/-1;display:grid;grid-template-columns:3fr 2fr;overflow:visible;min-height:360px}
+.work-card--featured .work-thumb{aspect-ratio:unset}
+.work-card--featured .work-info{padding:2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;gap:.75rem}
+.work-card--featured .work-title{font-size:clamp(1.4rem,2.5vw,1.9rem)}
+.work-card--featured .work-desc{font-size:.95rem;max-width:46ch}
+@media(max-width:900px){.work-card--featured{grid-template-columns:1fr}.work-card--featured .work-thumb{aspect-ratio:16/9;min-height:unset}.work-card--featured .work-info{padding:1.25rem;gap:.4rem}}
+
+/* MUSIC */
+.music-list{margin-top:3rem}
+.music-item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2rem;padding:1.5rem 0;border-bottom:1px solid var(--border);transition:all .2s;cursor:pointer}
+.music-item:hover{padding-left:.5rem}
+.music-item:hover .music-num{color:var(--accent)}
+.music-item:hover .music-play{border-color:var(--accent);color:var(--accent);background:var(--bg3)}
+.music-num{font-size:.72rem;letter-spacing:.1em;color:var(--text3);min-width:1.5rem}
+.music-name{font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.2rem}
+.music-source{font-size:.72rem;color:var(--text3)}
+.music-play{width:36px;height:36px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text2);cursor:pointer;transition:all .2s;background:none;font-size:.6rem}
+.music-play:hover{border-color:var(--accent);color:var(--accent);background:var(--bg3)}
+
+/* REVIEWS */
+.reviews-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.review-card{padding:2rem 2rem 2rem 2rem;border:1px solid var(--border);border-radius:2px;background:var(--bg2);position:relative;padding-top:4rem}
+.review-card::before{content:'\201C';font-family:var(--serif);font-size:5rem;line-height:1;color:var(--accent);position:absolute;top:.6rem;left:1.5rem;opacity:.75}
+.review-text{font-size:1rem;font-weight:300;color:var(--text2);line-height:1.85;margin-bottom:1.5rem}
+.review-source{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+
+/* GALERIE */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:3rem}
+.gallery-item{aspect-ratio:4/3;background:var(--bg3);overflow:hidden;border:1px solid var(--border);border-radius:2px;cursor:pointer;transition:transform .3s,border-color .3s;position:relative;display:block;text-decoration:none}
+.gallery-item:hover{transform:scale(1.02);border-color:var(--accent2)}
+.gallery-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gallery-note{font-size:.72rem;color:var(--text3);margin-top:.75rem}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;background:rgba(10,14,22,.96);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lb-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;max-width:min(88vw,960px);pointer-events:none}
+.lb-wrap img{max-width:100%;max-height:76vh;object-fit:contain;border-radius:2px;display:block;pointer-events:none}
+.lb-caption{font-size:.88rem;font-weight:400;color:rgba(228,232,240,.75);text-align:center;letter-spacing:.04em;text-transform:uppercase}
+.lb-counter{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(228,232,240,.3)}
+.lb-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:1px solid rgba(255,255,255,.2);border-radius:50%;width:38px;height:38px;color:rgba(255,255,255,.55);cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.lb-close:hover{border-color:rgba(255,255,255,.7);color:#fff}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,.15);border-radius:50%;width:52px;height:52px;color:rgba(255,255,255,.55);cursor:pointer;font-size:2rem;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1}
+.lb-prev{left:1.5rem}
+.lb-next{right:1.5rem}
+.lb-prev:hover,.lb-next:hover{border-color:rgba(255,255,255,.65);color:#fff}
+@media(max-width:700px){.lb-prev{left:.4rem}.lb-next{right:.4rem}.lb-wrap img{max-height:65vh}}
+
+/* PRESS WALL – ROZHOVORY */
+.press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.press-card{border:1px solid var(--border);border-radius:2px;background:var(--bg2);padding:1.75rem;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,transform .2s;text-decoration:none;color:inherit}
+.press-card:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.press-source{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+.press-date{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
+.press-title{font-size:.95rem;color:var(--text);line-height:1.55;flex:1;font-weight:400;margin-top:.2rem}
+.press-btn{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border:1px solid var(--border2);border-radius:2rem;text-decoration:none;color:var(--text2);width:fit-content;margin-top:.75rem;transition:all .2s}
+.press-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* MODEROVÁNÍ */
+.mod-layout{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:stretch}
+.mod-left{display:flex;flex-direction:column;gap:1rem}
+.mod-left-photo{flex:1;border-radius:2px;overflow:hidden;border:1px solid var(--border);position:relative;min-height:200px}
+.mod-left-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+.mod-intro{font-size:.95rem;color:var(--text2);line-height:1.9;font-weight:300;margin-bottom:1.5rem}
+.mod-clients-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
+.mod-client{padding:1.25rem 1.5rem;border:1px solid var(--border);border-radius:2px;background:var(--bg2);transition:border-color .2s}
+.mod-client:hover{border-color:var(--accent2)}
+.mod-client-name{font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.3rem;line-height:1.25}
+.mod-client-role{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
+.mod-podcast{padding-top:.5rem}
+.mod-podcast-name{font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.6rem}
+.mod-podcast-desc{font-size:.95rem;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.25rem}
+.platform-links{display:flex;gap:.75rem;flex-wrap:wrap}
+.platform-link{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid var(--border2);border-radius:2rem;text-decoration:none;color:var(--text2);transition:all .2s}
+.platform-link:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SPOTIFY WIDGET */
+.spotify-wrap{border:1px solid var(--border);border-radius:2px;overflow:hidden;background:var(--bg2)}
+.spotify-wrap iframe{display:block;filter:saturate(0.55) brightness(.95) sepia(12%)}
+[data-theme="dark"] .spotify-wrap iframe{filter:saturate(0.42) brightness(.88) hue-rotate(20deg)}
+
+/* CONTACT – minimal centered */
+.contact-centered{text-align:center;max-width:52ch;margin-inline:auto}
+.contact-tagline{font-size:.95rem;color:var(--text2);line-height:1.85;font-weight:300;margin:.5rem 0 3rem}
+.contact-email-big{display:inline-block;font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:400;font-style:italic;color:var(--accent);text-decoration:none;padding-bottom:.3rem;border-bottom:1px solid var(--accent2);margin-bottom:3rem;transition:color .2s;line-height:1.2}
+.contact-email-big:hover{color:var(--text)}
+.social-text-row{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+.social-text-link{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);text-decoration:none;transition:color .2s}
+.social-text-link:hover{color:var(--accent)}
+
+/* FOOTER */
+footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;max-width:var(--max-w);margin-inline:auto}
+.footer-copy{font-size:.72rem;color:var(--text3);letter-spacing:.03em;line-height:1.6}
+.footer-name{font-family:var(--serif);font-size:.9rem;font-style:italic;color:var(--text2);white-space:nowrap;padding-top:.1rem}
+.footer-credits{display:flex;flex-direction:column;gap:.25rem;text-align:right}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{background:var(--bg);border:1px solid var(--border);border-radius:2px;max-width:700px;width:100%;max-height:88vh;overflow-y:auto;position:relative;padding:2.5rem;transition:background .3s,border-color .3s}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:1px solid var(--border2);border-radius:50%;width:32px;height:32px;cursor:pointer;color:var(--text2);font-size:.9rem;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1;font-family:var(--sans)}
+.modal-close:hover{border-color:var(--accent);color:var(--accent)}
+.modal-player-wrap{aspect-ratio:16/9;background:#000;border-radius:2px;overflow:hidden}
+.modal-player-wrap iframe{width:100%;height:100%;border:0}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .btn-menu{display:flex}
+  .hero{grid-template-columns:1fr;padding-top:calc(var(--nav-h) + 1.5rem);padding-bottom:3rem;gap:2rem;min-height:auto}
+  .hero-visual{aspect-ratio:3/2;order:-1}
+  .hero-name{font-size:clamp(2.5rem,8vw,3.5rem)}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .works-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .reviews-grid{grid-template-columns:1fr}
+  .press-grid{grid-template-columns:repeat(2,1fr)}
+  .mod-layout{grid-template-columns:1fr}
+  .mod-podcast{padding-top:1rem}
+
+  section{padding:3.5rem 1.5rem}
+  footer{padding:1.5rem;flex-direction:column;gap:.75rem;text-align:center}
+  .footer-credits{text-align:center}
+  .about-stats{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .hero-roles{gap:.4rem}
+  .hero-cta{flex-direction:column;align-items:flex-start}
+  .music-item{grid-template-columns:auto 1fr;gap:1rem}
+  .music-play{display:none}
+  .about-stats{grid-template-columns:1fr}
+  .press-grid{grid-template-columns:1fr}
+  .mod-clients-grid{grid-template-columns:1fr}
+  .modal-box{padding:1.5rem}
+}
+
+/* DECORATIVE */
+.ornament{display:inline-block;width:1.5rem;height:1px;background:var(--accent2);vertical-align:middle;margin:0 .75rem}
+
+/* SCROLL FADE-IN */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Aleš <span>Kohout</span></a>
+  <div class="nav-links">
+    <a href="#o-mne" data-cs="O mně" data-en="About">O mně</a>
+    <a href="#tvorba" data-cs="Tvorba" data-en="Works">Tvorba</a>
+    <a href="#galerie" data-cs="Média" data-en="Media">Média</a>
+    <a href="#moderovani" data-cs="Moderování" data-en="Hosting">Moderování</a>
+    <a href="#kontakt" data-cs="Kontakt" data-en="Contact">Kontakt</a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-icon" id="langBtn" title="Přepnout jazyk" aria-label="Switch language">EN</button>
+    <button class="btn-icon" id="themeBtn" title="Přepnout téma" aria-label="Toggle theme">☀</button>
+    <button class="btn-menu" id="menuBtn" type="button" aria-label="Otevřít menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobilní navigace">
+  <a href="#o-mne" data-cs="O mně" data-en="About">O mně</a>
+  <a href="#tvorba" data-cs="Tvorba" data-en="Works">Tvorba</a>
+  <a href="#galerie" data-cs="Média" data-en="Media">Média</a>
+  <a href="#moderovani" data-cs="Moderování" data-en="Hosting">Moderování</a>
+  <a href="#kontakt" data-cs="Kontakt" data-en="Contact">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="uvod">
+  <div class="hero-text fade-in">
+    <div class="hero-eyebrow" data-cs="Herec · Skladatel · Pedagog" data-en="Actor · Composer · Educator">Herec · Skladatel · Pedagog</div>
+    <h1 class="hero-name">Aleš<br><em>Kohout</em></h1>
+    <div class="hero-roles">
+      <span class="role-tag" data-cs="Divadelní herec" data-en="Theatre actor">Divadelní herec</span>
+      <span class="role-tag" data-cs="Režisér" data-en="Director">Režisér</span>
+      <span class="role-tag" data-cs="Skladatel" data-en="Composer">Skladatel</span>
+      <span class="role-tag" data-cs="Moderátor" data-en="Host">Moderátor</span>
+      <span class="role-tag" data-cs="Pedagog JAMU" data-en="JAMU faculty">Pedagog JAMU</span>
+    </div>
+    <p class="hero-desc" data-cs="Muzikálový herec, tvůrce a pedagog. Autor muzikálových oper Anna Kareninová a Frankenstein, vedoucí ateliéru muzikálového herectví na JAMU v Brně." data-en="Musical theatre actor, creator and educator. Composer of the operas Anna Karenina and Frankenstein, head of the musical theatre studio at JAMU in Brno.">Muzikálový herec, tvůrce a pedagog. Autor muzikálových oper Anna Kareninová a Frankenstein, vedoucí ateliéru muzikálového herectví na JAMU v Brně.</p>
+    <div class="hero-cta">
+      <a href="#tvorba" class="btn-primary" data-cs="Moje tvorba" data-en="My work">Moje tvorba</a>
+      <a href="#kontakt" class="btn-secondary" data-cs="Kontaktovat" data-en="Get in touch">Kontaktovat</a>
+    </div>
+  </div>
+  <div class="hero-visual fade-in">
+    <div class="hero-accent-line"></div>
+    <img src="Photo/Aleš Kohout.jpg" alt="Aleš Kohout"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-position:top center">
+    <div style="position:absolute;bottom:2rem;left:2rem">
+    </div>
+  </div>
+</section>
+
+
+<!-- O MNĚ -->
+<section id="o-mne">
+  <div class="section-label fade-in" data-cs="O mně" data-en="About">O mně</div>
+  <h2 class="section-title fade-in">Kde se <em>setkává</em><br>hudba a divadlo</h2>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p data-cs="Propojuji hudbu a slova do muzikálových oper." data-en="I bring music and words together in musical operas.">Propojuji hudbu a slova do muzikálových oper.</p>
+      <p data-cs="Po absolvování muzikálového herectví na JAMU jsem nastoupil do Divadla Josefa Kajetána Tyla v Plzni, kde jsem strávil osm sezón. Mohli jste mě vidět v muzikálech Probuzení jara, Footloose, Adéla ještě nevečeřela, Noc na Karlštejně, Kdyby tisíc klarinetů, Producenti, Kočky, Polibek pavoučí ženy, Někdo to rád horké a dalších." data-en="After graduating in musical theatre from JAMU, I joined the Josef Kajetán Tyl Theatre in Pilsen, where I spent eight seasons. You may have seen me in Spring Awakening, Footloose, Adéla Still Hasn't Had Dinner, Night at Karlštejn, If a Thousand Clarinets, The Producers, Cats, Kiss of the Spider Woman, Some Like It Hot, and others.">Po absolvování muzikálového herectví na JAMU jsem nastoupil do Divadla Josefa Kajetána Tyla v Plzni, kde jsem strávil osm sezón. Mohli jste mě vidět v muzikálech Probuzení jara, Footloose, Adéla ještě nevečeřela, Noc na Karlštejně, Kdyby tisíc klarinetů, Producenti, Kočky, Polibek pavoučí ženy, Někdo to rád horké a dalších.</p>
+      <p data-cs="Dnes vedu ateliér muzikálového herectví na Janáčkově akademii múzických umění v Brně. Zároveň tvořím vlastní muzikálová díla a moderuji v rádiích, na společenských akcích i v podcastech." data-en="Today I lead the musical theatre studio at the Janáček Academy of Music and Performing Arts in Brno. I also compose original musical works and work as a host on radio, at events, and in podcasts.">Dnes vedu ateliér muzikálového herectví na Janáčkově akademii múzických umění v Brně. Zároveň tvořím vlastní muzikálová díla a moderuji v rádiích, na společenských akcích i v podcastech.</p>
+    </div>
+    <div class="about-stats fade-in">
+      <div class="stat-item">
+        <div class="stat-num">8</div>
+        <div class="stat-label" data-cs="Sezón v DJKT Plzeň" data-en="Seasons at DJKT Pilsen">Sezón v DJKT Plzeň</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20+</div>
+        <div class="stat-label" data-cs="Divadelních rolí" data-en="Theatre roles">Divadelních rolí</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label" data-cs="Vlastních muzikálů" data-en="Original musicals">Vlastních muzikálů</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">JAMU</div>
+        <div class="stat-label" data-cs="Pedagog od 2019" data-en="Faculty since 2019">Pedagog od 2019</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TVORBA -->
+<section id="tvorba">
+  <div class="section-label fade-in" data-cs="Vybraná díla" data-en="Selected works">Vybraná díla</div>
+  <h2 class="section-title fade-in"><em>Tvorba</em></h2>
+  <div class="works-grid">
+
+    <div class="work-card work-card--featured fade-in">
+      <div class="work-thumb" data-video-id="e0xqo9Ghko0">
+        <img src="https://img.youtube.com/vi/e0xqo9Ghko0/maxresdefault.jpg" alt="Příběh utajené královny" loading="lazy">
+        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+      </div>
+      <div class="work-info">
+        <div class="work-year" data-cs="Premiéra 10. 9. 2026 · Divadlo na Orlí" data-en="Premiere 10 Sep 2026 · Divadlo na Orlí">Premiéra 10. 9. 2026 · Divadlo na Orlí</div>
+        <div class="work-title" data-cs="Příběh utajené královny" data-en="The Hidden Queen">Příběh utajené královny</div>
+        <p class="work-desc" data-cs="Muzikál inspirovaný skutečnými událostmi vzdává hold ženě, jejíž život byl protkán vášní, láskou, zradou i zázraky. Svůj klid nakonec nalezla daleko od královských sídel Velké Británie — v jihomoravském Blansku." data-en="A musical inspired by true events, paying tribute to a woman whose life was woven with passion, love, betrayal, and miracles. She finally found peace far from the royal seats of Great Britain — in the South Moravian town of Blansko.">Muzikál inspirovaný skutečnými událostmi vzdává hold ženě, jejíž život byl protkán vášní, láskou, zradou i zázraky. Svůj klid nakonec nalezla daleko od královských sídel Velké Británie — v jihomoravském Blansku.</p>
+      </div>
+    </div>
+
+    <div class="work-card fade-in">
+      <div class="work-thumb" data-video-id="QNsZ0VhNieI" data-video-list="PLE17M0JerCSWjiPUTqDpnb8nmbai1lROc">
+        <img src="https://img.youtube.com/vi/QNsZ0VhNieI/maxresdefault.jpg" alt="Frankenstein – skutečný příběh" loading="lazy">
+        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+      </div>
+      <div class="work-info">
+        <div class="work-year" data-cs="Premiéra 15. 9. 2022 · Divadlo na Orlí" data-en="Premiere 15 Sep 2022 · Divadlo na Orlí">Premiéra 15. 9. 2022 · Divadlo na Orlí</div>
+        <div class="work-title" data-cs="Frankenstein – skutečný příběh" data-en="Frankenstein – A True Story">Frankenstein – skutečný příběh</div>
+        <p class="work-desc" data-cs="Píše se rok 1816 a Mary Wollstonecraft-Godwinová je svědkem dramatických událostí, které ji inspirují k napsání jejího nejslavnějšího románu. Setkává se s vědcem, který si hrál na Boha a byl odsouzen k věčnému utrpení." data-en="The year is 1816 and Mary Wollstonecraft Godwin witnesses dramatic events that inspire her to write her most famous novel. She encounters a scientist who played God and was condemned to eternal suffering.">Píše se rok 1816 a Mary Wollstonecraft-Godwinová je svědkem dramatických událostí, které ji inspirují k napsání jejího nejslavnějšího románu. Setkává se s vědcem, který si hrál na Boha a byl odsouzen k věčnému utrpení.</p>
+      </div>
+    </div>
+
+    <div class="work-card fade-in">
+      <div class="work-thumb" data-video-id="tz3enjp0IUo" data-video-list="PLE17M0JerCSV0N6ISnP2_szCcKmPMZwpC">
+        <img src="https://img.youtube.com/vi/tz3enjp0IUo/maxresdefault.jpg" alt="Anna Kareninová" loading="lazy">
+        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+      </div>
+      <div class="work-info">
+        <div class="work-year" data-cs="Premiéra 20. 9. 2018 · Divadlo na Orlí" data-en="Premiere 20 Sep 2018 · Divadlo na Orlí">Premiéra 20. 9. 2018 · Divadlo na Orlí</div>
+        <div class="work-title" data-cs="Anna Kareninová" data-en="Anna Karenina">Anna Kareninová</div>
+        <p class="work-desc" data-cs="„Měl by člověk litovat toho, co udělal z lásky? Ne. Litovat by měl jen toho, co neudělal." Muzikálová opera, která se ihned po premiéře stala jednou z nejúspěšnějších inscenací Divadla na Orlí." data-en="&ldquo;Should one regret what one did for love? No — only what one did not do.&rdquo; A musical opera that immediately became one of the most celebrated productions at Divadlo na Orlí.">„Měl by člověk litovat toho, co udělal z lásky? Ne. Litovat by měl jen toho, co neudělal." Muzikálová opera, která se ihned po premiéře stala jednou z nejúspěšnějších inscenací Divadla na Orlí.</p>
+      </div>
+    </div>
+
+    <div class="work-card fade-in">
+      <div class="work-thumb" data-video-id="Ys2y3DQOwuw" data-video-list="PLE17M0JerCSUcqyURbyDrksKHF1w4MF40">
+        <img src="https://img.youtube.com/vi/Ys2y3DQOwuw/maxresdefault.jpg" alt="Sonety – podoby lásky" loading="lazy">
+        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+      </div>
+      <div class="work-info">
+        <div class="work-year" data-cs="Premiéra 22. 2. 2022 · Divadlo na Orlí" data-en="Premiere 22 Feb 2022 · Divadlo na Orlí">Premiéra 22. 2. 2022 · Divadlo na Orlí</div>
+        <div class="work-title" data-cs="Sonety – podoby lásky" data-en="Sonnets – shapes of love">Sonety – podoby lásky</div>
+        <p class="work-desc" data-cs="Kolik podob lásky lze najít v poezii Williama Shakespearea? Netradiční projekt propojující herectví, zpěv, tanec a přednes s výraznými pohybovými a vokálními prvky." data-en="How many forms of love can be found in Shakespeare's poetry? An unconventional project combining acting, singing, dance, and recitation with expressive movement and vocal elements.">Kolik podob lásky lze najít v poezii Williama Shakespearea? Netradiční projekt propojující herectví, zpěv, tanec a přednes s výraznými pohybovými a vokálními prvky.</p>
+      </div>
+    </div>
+
+    <div class="work-card fade-in">
+      <div class="work-thumb" data-video-id="WKs5z44StE8">
+        <img src="https://img.youtube.com/vi/WKs5z44StE8/maxresdefault.jpg" alt="Metro(nom)" loading="lazy">
+        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+      </div>
+      <div class="work-info">
+        <div class="work-year" data-cs="Premiéra 20. 10. 2022 · Divadlo na Orlí" data-en="Premiere 20 Oct 2022 · Divadlo na Orlí">Premiéra 20. 10. 2022 · Divadlo na Orlí</div>
+        <div class="work-title">Metro(nom)</div>
+        <p class="work-desc" data-cs="Komorní muzikál sledující příběh dvou lidí, které svedla dohromady stanice metra. Zůstat v zajetých kolejích v rytmu neúprosného metronomu nebo se vydat do neznáma? Vsadit na náhodu nebo na osud?" data-en="A chamber musical following two people brought together by a metro station. Stay on the well-worn tracks to the beat of the relentless metronome, or venture into the unknown? Trust chance or destiny?">Komorní muzikál sledující příběh dvou lidí, které svedla dohromady stanice metra. Zůstat v zajetých kolejích v rytmu neúprosného metronomu nebo se vydat do neznáma? Vsadit na náhodu nebo na osud?</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- RECENZE (pod Tvorba, bez nav odkazu) -->
+<section id="recenze">
+  <div class="section-label fade-in" data-cs="Ohlasy" data-en="Reviews">Ohlasy</div>
+  <h2 class="section-title fade-in">Co říkají <em>diváci</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <p class="review-text" data-cs="Naprosto bezvýhradných 100 % a must see. Brilantní herecké výkony, nádherná hudba, nápaditá práce s kostýmy. Jedním slovem nádhera." data-en="A completely unqualified 100% and must-see. Brilliant performances, beautiful music, creative costume work. In one word: magnificent.">Naprosto bezvýhradných 100 % a must see. Brilantní herecké výkony, nádherná hudba, nápaditá práce s kostýmy. Jedním slovem nádhera.</p>
+      <div class="review-source">i-divadlo.cz · Anna Kareninová</div>
+    </div>
+    <div class="review-card fade-in">
+      <p class="review-text" data-cs="Nejlepší muzikál, který jsem kdy viděl. Stvořili něco, co tu nemá obdoby. Smekám kloubouk před celým inscenačním týmem." data-en="The best musical I have ever seen. They created something without equal. I tip my hat to the entire production team.">Nejlepší muzikál, který jsem kdy viděl. Stvořili něco, co tu nemá obdoby. Smekám kloubouk před celým inscenačním týmem.</p>
+      <div class="review-source">i-divadlo.cz · Anna Kareninová</div>
+    </div>
+    <div class="review-card fade-in">
+      <p class="review-text" data-cs="Na tohle představení nikdy nezapomenu. Zasáhlo mě neskutečně. Nádherná hudba a texty. Aleš Kohout má obrovský talent." data-en="I will never forget this performance. It moved me profoundly. Beautiful music and lyrics. Aleš Kohout has extraordinary talent.">Na tohle představení nikdy nezapomenu. Zasáhlo mě neskutečně. Nádherná hudba a texty. Aleš Kohout má obrovský talent.</p>
+      <div class="review-source">i-divadlo.cz · Anna Kareninová</div>
+    </div>
+    <div class="review-card fade-in">
+      <p class="review-text" data-cs="Příslib úspěšné sezóny. Dechberoucí představení talentovaných studentů JAMU. Muzikál superlativů. Návrat Aleše Kohouta je opět bomba." data-en="A promise of a successful season. Breathtaking performances by talented JAMU students. A musical of superlatives. Kohout's return is once again a sensation.">Příslib úspěšné sezóny. Dechberoucí představení talentovaných studentů JAMU. Muzikál superlativů. Návrat Aleše Kohouta je opět bomba.</p>
+      <div class="review-source">i-divadlo.cz · Frankenstein</div>
+    </div>
+    <div class="review-card fade-in">
+      <p class="review-text" data-cs="Drásavá hudba burácí od začátku do konce, je to hodně zahuštěná kompozice se zajímavými vícehlasy i exponovanými áriemi, která klade na mladé interprety opravdu velké nároky." data-en="The harrowing music roars from start to finish — a densely composed work with striking harmonies and demanding arias that put real pressure on the young performers.">Drásavá hudba burácí od začátku do konce, je to hodně zahuštěná kompozice se zajímavými vícehlasy i exponovanými áriemi, která klade na mladé interprety opravdu velké nároky.</p>
+      <div class="review-source">i-divadlo.cz · Frankenstein</div>
+    </div>
+    <div class="review-card fade-in">
+      <p class="review-text" data-cs="Příjemný, oddychový komorní muzikál v podání studentů JAMU. Studenti překvapili skvělým výkonem a vysokým nasazením. Výborný byl i hudební doprovod." data-en="A pleasant, relaxed chamber musical performed by JAMU students. The students impressed with an excellent performance and tremendous commitment. The musical accompaniment was outstanding too.">Příjemný, oddychový komorní muzikál v podání studentů JAMU. Studenti překvapili skvělým výkonem a vysokým nasazením. Výborný byl i hudební doprovod.</p>
+      <div class="review-source">i-divadlo.cz · Metro(nom)</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HUDBA (pod Tvorba, bez nav odkazu) -->
+<section id="hudba">
+  <div class="section-label fade-in" data-cs="Poslechnout" data-en="Listen">Poslechnout</div>
+  <h2 class="section-title fade-in">Vybraná <em>hudba</em></h2>
+  <div class="music-list">
+    <div class="music-item fade-in" data-video="ey11keFCzeM" data-list="PLE17M0JerCSV0N6ISnP2_szCcKmPMZwpC" role="button" tabindex="0" aria-label="Přehrát Krutý mráz">
+      <span class="music-num">01</span>
+      <div class="music-meta">
+        <div class="music-name" data-cs="Krutý mráz" data-en="Cruel frost">Krutý mráz</div>
+        <div class="music-source">Anna Kareninová · ústřední duet</div>
+      </div>
+      <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
+    </div>
+    <div class="music-item fade-in" data-video="Xi7W2XXhLPI" data-list="PLE17M0JerCSWvWeas2oW1E6AFHrr5P7uE" role="button" tabindex="0" aria-label="Přehrát Ameliina kletba">
+      <span class="music-num">02</span>
+      <div class="music-meta">
+        <div class="music-name" data-cs="Ameliina kletba" data-en="Amelia's curse">Ameliina kletba</div>
+        <div class="music-source">Kráska a netvor · leitmotiv</div>
+      </div>
+      <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
+    </div>
+    <div class="music-item fade-in" data-video="UDaQxmfajWw" data-list="PLE17M0JerCSWMLBR5dueLLb7RNJhcsIUA" role="button" tabindex="0" aria-label="Přehrát Hanebný ostrov">
+      <span class="music-num">03</span>
+      <div class="music-meta">
+        <div class="music-name" data-cs="Hanebný ostrov" data-en="Infamous island">Hanebný ostrov</div>
+        <div class="music-source">Odsouzená Atlantida · úvodní píseň</div>
+      </div>
+      <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
+    </div>
+    <div class="music-item fade-in" data-video="jTpIog5pdHE" data-list="PLE17M0JerCSWS6G6N10UPw2HmVxEd9ejj" role="button" tabindex="0" aria-label="Přehrát Prázdný stůl i židle prázdné">
+      <span class="music-num">04</span>
+      <div class="music-meta">
+        <div class="music-name" data-cs="Prázdný stůl i židle prázdné" data-en="Empty table, empty chairs">Prázdný stůl i židle prázdné</div>
+        <div class="music-source">Bídníci · Marius</div>
+      </div>
+      <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- GALERIE (Média – nav odkaz) -->
+<section id="galerie">
+  <div class="section-label fade-in" data-cs="Tím vším jsem byl" data-en="What I've been">Tím vším jsem byl</div>
+  <h2 class="section-title fade-in">Foto<em>galerie</em></h2>
+  <div class="gallery-grid">
+    <a href="#" class="gallery-item fade-in" aria-label="Footloose"><img src="Photo/Footloose.jpg" alt="Footloose"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Producenti"><img src="Photo/Producenti.jpg" alt="Producenti" style="object-position:right center"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Probuzení jara"><img src="Photo/Probuzení jara.jpg" alt="Probuzení jara"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Liduschka Baarová"><img src="Photo/Liduschka Baarova.jpg" alt="Liduschka Baarová"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Adéla ještě nevečeřela"><img src="Photo/Adéla ještě nevečeřela.jpg" alt="Adéla ještě nevečeřela"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Někdo to rád horké"><img src="Photo/Někdo to rád horké.jpg" alt="Někdo to rád horké"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Zahrada divů"><img src="Photo/Zahrada divů.jpeg" alt="Zahrada divů"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Na flámu"><img src="Photo/Na flámu.jpg" alt="Na flámu"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Noc na Karlštejně"><img src="Photo/Noc na Karlštejně.jpg" alt="Noc na Karlštejně"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Divá Bára"><img src="Photo/Divá Bára.jpg" alt="Divá Bára"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Děj se co děj"><img src="Photo/Děj se co děj.jpg" alt="Děj se co děj"></a>
+    <a href="#" class="gallery-item fade-in" aria-label="Kdyby tisíc klarinetů"><img src="Photo/Kdyby tisíc klarinetů.jpg" alt="Kdyby tisíc klarinetů"></a>
+  </div>
+</section>
+
+
+<!-- ROZHOVORY (pod Média, bez nav odkazu) -->
+<section id="rozhovory">
+  <div class="section-label fade-in" data-cs="V médiích" data-en="In the media">V médiích</div>
+  <h2 class="section-title fade-in"><em>Rozhovory</em> o mně</h2>
+  <div class="press-grid">
+    <a href="https://vysocina.rozhlas.cz/rockovy-muzikal-odsouzena-atlantida-se-po-15-letech-vraci-na-prkna-9387758" class="press-card fade-in" target="_blank" rel="noopener">
+      <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
+      <time class="press-date" datetime="2025-01-07">7. 1. 2025</time>
+      <h3 class="press-title" data-cs="Odsouzená Atlantida se vrací po patnácti letech" data-en="Condemned Atlantis returns after fifteen years">Odsouzená Atlantida se vrací po patnácti letech</h3>
+      <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
+    </a>
+    <a href="https://ceskepodcasty.cz/podcast/zivot-plus/ales-kohout-dusi-basnik-zivotem-optimista" class="press-card fade-in" target="_blank" rel="noopener">
+      <div class="press-source" data-cs="Podcast Život plus" data-en="Podcast Život plus">Podcast Život plus</div>
+      <time class="press-date" datetime="2024-11-11">11. 11. 2024</time>
+      <h3 class="press-title" data-cs="Osobní rozhovor o profesním a soukromém životě" data-en="A personal conversation about professional and personal life">Osobní rozhovor o profesním a soukromém životě</h3>
+      <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
+    </a>
+    <a href="https://www.zaktv.cz/archiv/interview/7810.html" class="press-card fade-in" target="_blank" rel="noopener">
+      <div class="press-source" data-cs="ZAK TV Plzeň" data-en="ZAK TV Pilsen">ZAK TV Plzeň</div>
+      <time class="press-date" datetime="2023-06-21">21. 6. 2023</time>
+      <h3 class="press-title" data-cs="O Frankensteinovi a působení na JAMU" data-en="On Frankenstein and working at JAMU">O Frankensteinovi a působení na JAMU</h3>
+      <span class="press-btn" data-cs="Přehrát" data-en="Watch">Přehrát</span>
+    </a>
+    <a href="https://plzen.rozhlas.cz/nekdejsi-solista-plzenskeho-muzikalu-se-na-par-dni-vraci-z-brnenske-jamu-zpet-do-9005979" class="press-card fade-in" target="_blank" rel="noopener">
+      <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
+      <time class="press-date" datetime="2023-06-02">2. 6. 2023</time>
+      <h3 class="press-title" data-cs="O muzikálu Frankenstein a hudbě" data-en="On the Frankenstein musical and music">O muzikálu Frankenstein a hudbě</h3>
+      <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
+    </a>
+    <a href="https://plzen.rozhlas.cz/ales-kohout-7541360" class="press-card fade-in" target="_blank" rel="noopener">
+      <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
+      <time class="press-date" datetime="2019-06-18">18. 6. 2019</time>
+      <h3 class="press-title" data-cs="O odchodu z Tylova divadla po sedmi sezonách" data-en="On leaving Tyl Theatre after seven seasons">O odchodu z Tylova divadla po sedmi sezonách</h3>
+      <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
+    </a>
+    <a href="https://vysocina.rozhlas.cz/muzikalovy-herec-ales-kohout-nikdy-jsem-moc-dobre-nehybal-na-studia-jsem-se-7789564" class="press-card fade-in" target="_blank" rel="noopener">
+      <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
+      <time class="press-date" datetime="2019-03-19">19. 3. 2019</time>
+      <h3 class="press-title" data-cs="O rozmanitém uměleckém působení" data-en="On his diverse artistic activities">O rozmanitém uměleckém působení</h3>
+      <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- MODEROVÁNÍ -->
+<section id="moderovani">
+  <div class="mod-layout">
+
+    <!-- Vlevo: label + nadpis + foto -->
+    <div class="mod-left fade-in">
+      <div class="section-label" data-cs="Moderování" data-en="Hosting">Moderování</div>
+      <h2 class="section-title">Hlas, který <em>spojuje</em></h2>
+      <div class="mod-left-photo">
+        <img src="Photo/Aleš Kohout moderátor.jpg" alt="Aleš Kohout – moderátor" style="object-position:top center">
+      </div>
+    </div>
+
+    <!-- Vpravo: intro + karty klientů + podcast -->
+    <div class="fade-in">
+      <p class="mod-intro" data-cs="Jako moderátor přináším kultivovaný projev, přirozenou autoritu a schopnost propojit publikum se sdělením — ať jde o živé rozhlasové vysílání, akademickou konferenci nebo podcastový rozhovor." data-en="As a host I bring a cultivated voice, natural authority, and the ability to connect an audience with a message — whether on live radio, at an academic conference, or in a podcast conversation.">Jako moderátor přináším kultivovaný projev, přirozenou autoritu a schopnost propojit publikum se sdělením — ať jde o živé rozhlasové vysílání, akademickou konferenci nebo podcastový rozhovor.</p>
+      <div class="mod-clients-grid">
+        <div class="mod-client">
+          <div class="mod-client-name">HitRadio City</div>
+          <div class="mod-client-role" data-cs="Moderátor zpravodajství" data-en="News presenter">Moderátor zpravodajství</div>
+        </div>
+        <div class="mod-client">
+          <div class="mod-client-name">Rádio Krokodýl</div>
+          <div class="mod-client-role" data-cs="Moderátor · redaktor" data-en="Host · editor">Moderátor · redaktor</div>
+        </div>
+        <div class="mod-client">
+          <div class="mod-client-name">Masarykova univerzita</div>
+          <div class="mod-client-role" data-cs="Lékařská a Ekonomicko-správní fakulta · moderování konferencí" data-en="Faculty of Medicine &amp; Economics · conference hosting">Lékařská a Ekonomicko-správní fakulta · moderování konferencí</div>
+        </div>
+        <div class="mod-client">
+          <div class="mod-client-name">Dům světla Praha</div>
+          <div class="mod-client-role" data-cs="Moderátor podcastu Život plus" data-en="Host of Život plus podcast">Moderátor podcastu Život plus</div>
+        </div>
+      </div>
+      <div class="mod-podcast">
+        <div class="mod-podcast-name" data-cs="Podcast Život plus" data-en="Podcast Život plus">Podcast Život plus</div>
+        <p class="mod-podcast-desc" data-cs="Podcast Život plus rozebírá témata, která přináší sám život: psychické zdraví, vztahy, identita, odvaha být sám sebou. Otevřené rozhovory se zajímavými osobnostmi pro všechny, kteří se nebojí mluvit o tom, na čem záleží." data-en="The Život plus Podcast explores topics that life itself brings: mental health, relationships, identity, and the courage to be yourself. Open conversations with fascinating personalities for everyone who isn't afraid to talk about what truly matters.">Podcast Život plus rozebírá témata, která přináší sám život: psychické zdraví, vztahy, identita, odvaha být sám sebou. Otevřené rozhovory se zajímavými osobnostmi pro všechny, kteří se nebojí mluvit o tom, na čem záleží.</p>
+        <div class="platform-links" style="margin-bottom:1.25rem">
+          <a href="https://open.spotify.com/show/2CXP5h3Nw7dZiyQEuGj8km" class="platform-link" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://podcasts.apple.com/cz/podcast/%C5%BEivot-plus/id1572239658" class="platform-link" target="_blank" rel="noopener">Apple Podcasts</a>
+          <a href="https://ceskepodcasty.cz/podcast/zivot-plus" class="platform-link" target="_blank" rel="noopener">České podcasty</a>
+        </div>
+        <div class="spotify-wrap">
+          <iframe src="https://open.spotify.com/embed/show/2CXP5h3Nw7dZiyQEuGj8km?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Podcast Život plus"></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="contact-centered">
+    <div class="section-label fade-in" style="justify-content:center" data-cs="Kontakt" data-en="Contact">Kontakt</div>
+    <h2 class="section-title fade-in">Pojďme <em>spolupracovat</em></h2>
+    <p class="contact-tagline fade-in" data-cs="Pro spolupráci, moderování i další umělecké projekty jsem k dispozici." data-en="Available for collaboration, hosting engagements and further artistic projects.">Pro spolupráci, moderování i další umělecké projekty jsem k dispozici.</p>
+    <a href="mailto:kohout.ales@gmail.com" class="contact-email-big fade-in">kohout.ales@gmail.com</a>
+    <div class="social-text-row fade-in">
+      <a href="https://www.facebook.com/aleskohoutofficial" class="social-text-link" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/kohoutales/" class="social-text-link" target="_blank" rel="noopener">Instagram</a>
+      <a href="http://linkedin.com/in/aleš-kohout-8a7916a0" class="social-text-link" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.youtube.com/user/aleskohout1" class="social-text-link" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Aleš Kohout</span>
+  <div class="footer-credits">
+    <span class="footer-copy" id="footer-year"></span>
+    <span class="footer-copy" data-cs="Fotografie: Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava" data-en="Photography: Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archive of J. K. Tyl Theatre Pilsen and Silesian Theatre Opava">Fotografie: Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava</span>
+    <span class="footer-copy" data-cs="Autoři videí: Igor Altstern, Táňa Vaněčková, Aleš Kohout." data-en="Video authors: Igor Altstern, Táňa Vaněčková, Aleš Kohout.">Autoři videí: Igor Altstern, Táňa Vaněčková, Aleš Kohout.</span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX – Fotogalerie -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerie">
+  <button class="lb-close" id="lb-close" aria-label="Zavřít">✕</button>
+  <button class="lb-prev" id="lb-prev" aria-label="Předchozí foto">&#8249;</button>
+  <div class="lb-wrap">
+    <img id="lb-img" src="" alt="">
+    <div id="lb-caption" class="lb-caption"></div>
+    <div id="lb-counter" class="lb-counter"></div>
+  </div>
+  <button class="lb-next" id="lb-next" aria-label="Další foto">&#8250;</button>
+</div>
+
+<!-- MODAL – YouTube přehrávač -->
+<div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Přehrávač">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Zavřít">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+// ── Lightbox – fotogalerie ─────────────────────────────────────────────────
+const lb      = document.getElementById('lightbox');
+const lbImg   = document.getElementById('lb-img');
+const lbCap   = document.getElementById('lb-caption');
+const lbCount = document.getElementById('lb-counter');
+const lbItems = Array.from(document.querySelectorAll('.gallery-item'));
+let lbCur = 0;
+
+function lbShow(i) {
+  lbCur = ((i % lbItems.length) + lbItems.length) % lbItems.length;
+  const item = lbItems[lbCur];
+  const img  = item.querySelector('img');
+  lbImg.src  = img ? img.getAttribute('src') : '';
+  lbImg.alt  = item.getAttribute('aria-label') || '';
+  lbCap.textContent   = item.getAttribute('aria-label') || '';
+  lbCount.textContent = (lbCur + 1) + ' / ' + lbItems.length;
+}
+function lbOpen(i) {
+  lbShow(i);
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('lb-close').focus();
+}
+function lbClose() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  lbImg.src = '';
+}
+document.getElementById('lb-close').addEventListener('click', lbClose);
+document.getElementById('lb-prev').addEventListener('click', () => lbShow(lbCur - 1));
+document.getElementById('lb-next').addEventListener('click', () => lbShow(lbCur + 1));
+lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') lbClose();
+  if (e.key === 'ArrowLeft') lbShow(lbCur - 1);
+  if (e.key === 'ArrowRight') lbShow(lbCur + 1);
+});
+let lbTx = 0;
+lb.addEventListener('touchstart', e => { lbTx = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend', e => {
+  const d = lbTx - e.changedTouches[0].clientX;
+  if (Math.abs(d) > 50) d > 0 ? lbShow(lbCur + 1) : lbShow(lbCur - 1);
+});
+lbItems.forEach((item, i) => {
+  item.addEventListener('click', e => { e.preventDefault(); lbOpen(i); });
+});
+
+// ── Modal – YouTube přehrávač ─────────────────────────────────────────────
+const overlay = document.getElementById('modal-overlay');
+const mBody   = document.getElementById('modal-body');
+const mClose  = document.getElementById('modal-close');
+
+function openModal(html) {
+  mBody.innerHTML = html;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  mClose.focus();
+}
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  const ifr = mBody.querySelector('iframe');
+  if (ifr) ifr.src = '';
+}
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+mClose.addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function openPlayer(videoId, listId) {
+  const src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1' + (listId ? '&list=' + listId : '');
+  openModal('<div class="modal-player-wrap"><iframe src="' + src + '" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe></div>');
+}
+
+// ── Tvorba – inline embed při kliknutí na kartu ───────────────────────────
+document.querySelectorAll('.work-thumb[data-video-id]').forEach(thumb => {
+  const btn = thumb.querySelector('.work-play-btn');
+  if (!btn) return;
+  const doEmbed = () => {
+    if (thumb.classList.contains('embedded')) return;
+    const id   = thumb.dataset.videoId;
+    const list = thumb.dataset.videoList;
+    const ifr  = document.createElement('iframe');
+    ifr.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1' + (list ? '&list=' + list : '');
+    ifr.setAttribute('frameborder', '0');
+    ifr.setAttribute('allowfullscreen', '');
+    ifr.allow = 'autoplay; encrypted-media';
+    thumb.classList.add('embedded');
+    thumb.innerHTML = '';
+    thumb.appendChild(ifr);
+  };
+  btn.addEventListener('click', e => { e.stopPropagation(); doEmbed(); });
+  thumb.closest('.work-card').addEventListener('click', doEmbed);
+});
+
+// ── Hudba – YouTube player v modalu ──────────────────────────────────────
+document.querySelectorAll('.music-item[data-video]').forEach(row => {
+  const play = () => openPlayer(row.dataset.video, row.dataset.list);
+  row.addEventListener('click', play);
+  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); } });
+});
+
+// ── Mobile menu ────────────────────────────────────────────────────────────
+const menuBtn    = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function setMenu(open) {
+  mobileMenu.classList.toggle('open', open);
+  menuBtn.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+menuBtn.addEventListener('click', function() {
+  setMenu(!mobileMenu.classList.contains('open'));
+});
+
+mobileMenu.querySelectorAll('a').forEach(function(a) {
+  a.addEventListener('click', function() { setMenu(false); });
+});
+
+// ── Téma & jazyk ───────────────────────────────────────────────────────────
+const themeBtn = document.getElementById('themeBtn');
+const langBtn  = document.getElementById('langBtn');
+let dark = true, en = false;
+
+function updateSpotifyTheme(isDark) {
+  document.querySelectorAll('.spotify-wrap iframe').forEach(iframe => {
+    const base = iframe.src.replace(/[&?]theme=\d/g, '');
+    iframe.src = base + (isDark ? '&theme=0' : '');
+  });
+}
+
+themeBtn.addEventListener('click', () => {
+  dark = !dark;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
+  themeBtn.textContent = dark ? '☀' : '☾';
+  updateSpotifyTheme(dark);
+});
+
+langBtn.addEventListener('click', () => {
+  en = !en;
+  langBtn.textContent = en ? 'CS' : 'EN';
+  langBtn.classList.toggle('lang-active', en);
+  document.querySelectorAll('[data-cs],[data-en]').forEach(el => {
+    const t = en ? el.dataset.en : el.dataset.cs;
+    if (t) el.textContent = t;
+  });
+  document.documentElement.lang = en ? 'en' : 'cs';
+});
+
+
+// ── Rok v patičce ─────────────────────────────────────────────────────────
+document.getElementById('footer-year').textContent = '© ' + new Date().getFullYear();
+
+// ── Scroll fade-in ─────────────────────────────────────────────────────────
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: .12 });
+document.querySelectorAll('.fade-in').forEach((el, i) => {
+  obs.observe(el);
+  el.style.transitionDelay = (i % 4 * .08) + 's';
+});
+</script>
+</body>
+</html>

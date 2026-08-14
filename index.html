@@ -4,15 +4,192 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aleš Kohout</title>
-<link rel="icon" href="favicon/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png">
-<link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- Titulek a popisek: jedna formulace pro Google, Facebook i X.
+     Anglickou variantu přepíná JS na konci stránky (viz applyLang). -->
+<title>Aleš Kohout – skladatel muzikálů, herec a moderátor | JAMU Brno</title>
+<meta name="description" content="Skládám a režíruji muzikálové opery – Anna Kareninová, Frankenstein, Příběh utajené královny. Hraju, moderuji a vedu ateliér muzikálového herectví na JAMU.">
+<link rel="canonical" href="https://aleskohout.com/">
+<link rel="alternate" hreflang="cs" href="https://aleskohout.com/">
+<link rel="alternate" hreflang="en" href="https://aleskohout.com/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://aleskohout.com/">
+<meta name="author" content="Aleš Kohout">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#0f1520">
+
+<!-- Open Graph / sdílení na sociálních sítích -->
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Aleš Kohout">
+<meta property="og:url" content="https://aleskohout.com/">
+<meta property="og:title" content="Aleš Kohout – skladatel muzikálů, herec a moderátor">
+<meta property="og:description" content="Skládám a režíruji muzikálové opery – Anna Kareninová, Frankenstein, Příběh utajené královny. Hraju, moderuji a vedu ateliér muzikálového herectví na JAMU.">
+<meta property="og:image" content="https://aleskohout.com/Photo/og-ales-kohout.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Aleš Kohout – skladatel muzikálů, herec a moderátor">
+<meta property="profile:first_name" content="Aleš">
+<meta property="profile:last_name" content="Kohout">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aleš Kohout – skladatel muzikálů, herec a moderátor">
+<meta name="twitter:description" content="Skládám a režíruji muzikálové opery – Anna Kareninová, Frankenstein, Příběh utajené královny. Hraju, moderuji a vedu ateliér muzikálového herectví na JAMU.">
+<meta name="twitter:image" content="https://aleskohout.com/Photo/og-ales-kohout.jpg">
+<meta name="twitter:image:alt" content="Aleš Kohout – skladatel muzikálů, herec a moderátor">
+
+<link rel="icon" href="favicon/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16.png?v=2">
+<link rel="apple-touch-icon" href="favicon/apple-touch-icon.png?v=2">
+<link rel="preload" as="image" href="Photo/ales-kohout.jpg" fetchpriority="high">
 <style>
+/* ===== Vlastni fonty - self-hosted, zadny pozadavek na Google ===== */
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-300-italic-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-300-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-400-italic-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-400-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-300-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-300-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-400-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-400-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-600-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/cormorant-garamond-600-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/dm-sans-300-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(fonts/dm-sans-300-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/dm-sans-400-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/dm-sans-400-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/dm-sans-500-normal-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/dm-sans-500-normal-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
@@ -21,7 +198,7 @@
 --bg3:#e1ddd7;
 --text:#1a1916;
 --text2:#57534b;
---text3:#96918a;
+--text3:#6b665f;
 --accent:#8b6f47;
 --accent2:#c4a882;
 --border:#d5d1cb;
@@ -38,7 +215,7 @@
 --bg3:#1c2740;
 --text:#e4e8f0;
 --text2:#9aaabf;
---text3:#576678;
+--text3:#7d8ea6;
 --accent:#c4a882;
 --accent2:#8b6f47;
 --border:#1e2e45;
@@ -183,24 +360,39 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-i
 .press-card:hover{border-color:var(--accent2);transform:translateY(-2px)}
 .press-source{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
 .press-date{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
-.press-title{font-size:.95rem;color:var(--text);line-height:1.55;flex:1;font-weight:400;margin-top:.2rem}
-.press-btn{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border:1px solid var(--border2);border-radius:2rem;text-decoration:none;color:var(--text2);width:fit-content;margin-top:.75rem;transition:all .2s}
+.press-title{font-size:.95rem;color:var(--text);line-height:1.5;font-weight:400;margin-top:.2rem}
+.press-perex{font-size:.85rem;color:var(--text2);line-height:1.75;font-weight:300;flex:1;margin-top:.15rem}
+.press-btn{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;border:1px solid var(--border2);border-radius:2rem;text-decoration:none;color:var(--text2);width:fit-content;margin-top:1.1rem;transition:all .2s}
 .press-btn:hover{border-color:var(--accent);color:var(--accent)}
 
 /* MODEROVÁNÍ */
-.mod-layout{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:stretch}
-.mod-left{display:flex;flex-direction:column;gap:1rem}
-.mod-left-photo{flex:1;border-radius:2px;overflow:hidden;border:1px solid var(--border);position:relative;min-height:200px}
-.mod-left-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
-.mod-intro{font-size:.95rem;color:var(--text2);line-height:1.9;font-weight:300;margin-bottom:1.5rem}
-.mod-clients-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem}
-.mod-client{padding:1.25rem 1.5rem;border:1px solid var(--border);border-radius:2px;background:var(--bg2);transition:border-color .2s}
-.mod-client:hover{border-color:var(--accent2)}
-.mod-client-name{font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.3rem;line-height:1.25}
-.mod-client-role{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text3)}
-.mod-podcast{padding-top:.5rem}
-.mod-podcast-name{font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.6rem}
-.mod-podcast-desc{font-size:.95rem;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.25rem}
+.mod-layout{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start}
+.mod-col-left{display:flex;flex-direction:column;gap:1rem}
+.mod-col-right{display:flex;flex-direction:column}
+/* Foto zůstane u nadpisu, dokud pravý sloupec scrolluje – jen tam, kde je dost výšky */
+@media(min-width:901px) and (min-height:860px){
+  .mod-col-left{position:sticky;top:calc(var(--nav-h) + 2rem)}
+}
+.mod-photo{margin:0}
+.mod-photo-frame{aspect-ratio:4/5;border-radius:2px;overflow:hidden;border:1px solid var(--border);background:var(--bg2);position:relative}
+.mod-photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+.mod-intro{font-size:.95rem;color:var(--text2);line-height:1.9;font-weight:300;margin-bottom:2.25rem}
+.mod-subhead{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);margin-bottom:.9rem}
+.mod-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.25rem}
+.mod-clients-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2.25rem}
+.mod-client{display:block;padding:1.25rem 1.5rem;border:1px solid var(--border);border-radius:2px;background:var(--bg2)}
+a.mod-client{text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+a.mod-client:hover{border-color:var(--accent2);transform:translateY(-2px)}
+.mod-client-tag{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.mod-client-name{font-size:1.05rem;font-weight:400;color:var(--text);margin-bottom:.25rem;line-height:1.25}
+.mod-client-role{font-size:.85rem;font-weight:300;color:var(--text2);line-height:1.55}
+.mod-client-meta{display:block;font-size:.72rem;letter-spacing:.06em;color:var(--text3);margin-top:.65rem;transition:color .2s}
+a.mod-client:hover .mod-client-meta{color:var(--accent)}
+.mod-cta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.mod-podcast{border-top:1px solid var(--border);margin-top:2.75rem;padding-top:2.5rem;scroll-margin-top:calc(var(--nav-h) + 1.5rem)}
+.mod-podcast-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.6rem;line-height:1.2}
+.mod-podcast-desc{font-size:.95rem;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.5rem}
+.mod-platform-note{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin:1.75rem 0 .75rem}
 .platform-links{display:flex;gap:.75rem;flex-wrap:wrap}
 .platform-link{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem 1rem;border:1px solid var(--border2);border-radius:2rem;text-decoration:none;color:var(--text2);transition:all .2s}
 .platform-link:hover{border-color:var(--accent);color:var(--accent)}
@@ -209,6 +401,22 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-i
 .spotify-wrap{border:1px solid var(--border);border-radius:2px;overflow:hidden;background:var(--bg2)}
 .spotify-wrap iframe{display:block;filter:saturate(0.55) brightness(.95) sepia(12%)}
 [data-theme="dark"] .spotify-wrap iframe{filter:saturate(0.42) brightness(.88) hue-rotate(20deg)}
+.spotify-facade{display:flex;align-items:center;gap:1.25rem;width:100%;height:152px;padding:1rem;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--sans);color:inherit;transition:background .2s}
+.spotify-facade:hover{background:var(--bg3)}
+.spotify-facade-cover{flex-shrink:0;width:120px;height:120px;object-fit:cover;border-radius:2px;display:block}
+.spotify-facade-text{display:flex;flex-direction:column;gap:.2rem;flex:1;min-width:0}
+.spotify-facade-title{font-size:1.05rem;font-weight:500;color:var(--text);line-height:1.25}
+.spotify-facade-sub{font-size:.82rem;color:var(--text2);font-weight:300}
+.spotify-facade-brand{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-top:.5rem}
+.spotify-facade-play{flex-shrink:0;width:52px;height:52px;margin-right:.75rem;border-radius:50%;background:#1db954;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;padding-left:4px;box-shadow:0 2px 12px rgba(0,0,0,.28);transition:transform .2s}
+.spotify-facade:hover .spotify-facade-play{transform:scale(1.07)}
+.spotify-note{font-size:.72rem;color:var(--text3);margin-top:.75rem}
+@media(max-width:560px){
+  .spotify-facade{gap:.9rem;padding:.85rem}
+  .spotify-facade-cover{width:96px;height:96px}
+  .spotify-facade-brand{display:none}
+  .spotify-facade-play{width:44px;height:44px;margin-right:.25rem}
+}
 
 /* CONTACT – minimal centered */
 .contact-centered{text-align:center;max-width:52ch;margin-inline:auto}
@@ -220,10 +428,17 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-i
 .social-text-link:hover{color:var(--accent)}
 
 /* FOOTER */
-footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;max-width:var(--max-w);margin-inline:auto}
-.footer-copy{font-size:.72rem;color:var(--text3);letter-spacing:.03em;line-height:1.6}
-.footer-name{font-family:var(--serif);font-size:.9rem;font-style:italic;color:var(--text2);white-space:nowrap;padding-top:.1rem}
-.footer-credits{display:flex;flex-direction:column;gap:.25rem;text-align:right}
+footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var(--max-w);margin-inline:auto}
+.footer-top{display:grid;grid-template-columns:minmax(11rem,1fr) 1.9fr 1.2fr;gap:3rem;align-items:start}
+.footer-col{display:flex;flex-direction:column}
+.footer-label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem}
+.footer-name{font-family:var(--serif);font-size:1.25rem;font-weight:300;letter-spacing:.08em;color:var(--text);line-height:1.2}
+.footer-name span{color:var(--accent);font-style:italic}
+.footer-name::after{content:'';display:block;width:1.5rem;height:1px;background:var(--accent2);margin:.9rem 0}
+.footer-copy{font-size:.75rem;color:var(--text3);line-height:1.8;max-width:44ch}
+.footer-year{font-size:.72rem;letter-spacing:.08em;color:var(--text3)}
+.footer-bottom{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.footer-privacy{font-size:.72rem;color:var(--text3);line-height:1.9;max-width:88ch}
 
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px)}
@@ -247,12 +462,19 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
   .reviews-grid{grid-template-columns:1fr}
   .press-grid{grid-template-columns:repeat(2,1fr)}
-  .mod-layout{grid-template-columns:1fr}
-  .mod-podcast{padding-top:1rem}
+  /* Na mobilu se oba sloupce rozpadnou na jednu osu a foto se přesune až za text */
+  .mod-layout{grid-template-columns:1fr;gap:2rem}
+  .mod-col-left,.mod-col-right{display:contents}
+  .mod-head{order:1}
+  .mod-body{order:2}
+  .mod-photo{order:3}
+  .mod-podcast{order:4;margin-top:0;padding-top:2rem}
+  .mod-photo-frame{aspect-ratio:3/2}
 
   section{padding:3.5rem 1.5rem}
-  footer{padding:1.5rem;flex-direction:column;gap:.75rem;text-align:center}
-  .footer-credits{text-align:center}
+  footer{padding:3rem 1.5rem 2rem}
+  .footer-top{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{margin-top:2rem}
   .about-stats{grid-template-columns:1fr 1fr}
 }
 @media(max-width:560px){
@@ -263,6 +485,7 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
   .about-stats{grid-template-columns:1fr}
   .press-grid{grid-template-columns:1fr}
   .mod-clients-grid{grid-template-columns:1fr}
+  .mod-cta{flex-direction:column;align-items:flex-start}
   .modal-box{padding:1.5rem}
 }
 
@@ -272,7 +495,175 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
 /* SCROLL FADE-IN */
 .fade-in{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .fade-in.visible{opacity:1;transform:none}
+
+/* A11Y – text jen pro čtečky a vyhledávače */
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 </style>
+
+<noscript><style>.fade-in{opacity:1;transform:none}</style></noscript>
+
+<!-- Strukturovaná data schema.org -->
+<!-- Strukturovaná data pro Google.
+     POZOR: u Příběhu utajené královny je v "offers" zatím jen odkaz na Divadlo na Orlí
+     a chybí "price". Až budou vstupenky v prodeji, doplň přímý odkaz a cenu –
+     teprve pak Google zobrazí u výsledku datum, místo a vstupenky. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://aleskohout.com/#ales-kohout",
+      "name": "Aleš Kohout",
+      "givenName": "Aleš",
+      "familyName": "Kohout",
+      "url": "https://aleskohout.com/",
+      "mainEntityOfPage": "https://aleskohout.com/",
+      "image": "https://aleskohout.com/Photo/ales-kohout.jpg",
+      "email": "kohout.ales@gmail.com",
+      "jobTitle": ["Skladatel", "Herec", "Režisér", "Moderátor", "Pedagog"],
+      "description": "Skladatel a režisér muzikálových oper, herec, moderátor a vedoucí ateliéru muzikálového herectví na Janáčkově akademii múzických umění v Brně.",
+      "knowsAbout": ["Muzikál", "Muzikálové herectví", "Hudební skladba", "Divadelní režie", "Moderování"],
+      "worksFor": {
+        "@type": "CollegeOrUniversity",
+        "name": "Janáčkova akademie múzických umění v Brně",
+        "alternateName": "JAMU",
+        "sameAs": "https://www.jamu.cz/"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Janáčkova akademie múzických umění v Brně",
+        "sameAs": "https://www.jamu.cz/"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brno",
+        "addressCountry": "CZ"
+      },
+      "sameAs": [
+        "https://www.facebook.com/aleskohoutofficial",
+        "https://www.instagram.com/kohoutales/",
+        "https://www.linkedin.com/in/ale%C5%A1-kohout-8a7916a0",
+        "https://www.youtube.com/user/aleskohout1",
+        "https://open.spotify.com/show/2CXP5h3Nw7dZiyQEuGj8km"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://aleskohout.com/#website",
+      "url": "https://aleskohout.com/",
+      "name": "Aleš Kohout",
+      "inLanguage": "cs",
+      "about": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "publisher": { "@id": "https://aleskohout.com/#ales-kohout" }
+    },
+    {
+      "@type": "TheaterEvent",
+      "@id": "https://aleskohout.com/#pribeh-utajene-kralovny",
+      "name": "Příběh utajené královny",
+      "url": "https://aleskohout.com/#tvorba",
+      "startDate": "2026-09-10T19:00:00+02:00",
+      "endDate": "2026-09-10T21:30:00+02:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "inLanguage": "cs",
+      "description": "Muzikál inspirovaný skutečnými událostmi vzdává hold ženě, jejíž život byl protkán vášní, láskou, zradou i zázraky. Svůj klid nakonec nalezla daleko od královských sídel Velké Británie — v jihomoravském Blansku.",
+      "image": "https://aleskohout.com/Photo/video-pribeh-utajene-kralovny.jpg",
+      "offers": {
+        "@type": "Offer",
+        "name": "Vstupenky na Příběh utajené královny",
+        "url": "https://www.divadlonaorli.jamu.cz/",
+        "availability": "https://schema.org/PreOrder",
+        "priceCurrency": "CZK",
+        "validFrom": "2026-06-01T09:00:00+02:00"
+      },
+      "location": {
+        "@type": "PerformingArtsTheater",
+        "name": "Divadlo na Orlí",
+        "sameAs": "https://www.divadlonaorli.jamu.cz/",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Orlí 19",
+          "addressLocality": "Brno",
+          "postalCode": "60200",
+          "addressCountry": "CZ"
+        }
+      },
+      "composer": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "performer": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "organizer": { "@id": "https://aleskohout.com/#ales-kohout" }
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://aleskohout.com/#anna-kareninova",
+      "name": "Anna Kareninová",
+      "url": "https://aleskohout.com/#tvorba",
+      "image": "https://aleskohout.com/Photo/video-anna-kareninova.jpg",
+      "genre": "Muzikálová opera",
+      "datePublished": "2018-09-20",
+      "creator": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "inLanguage": "cs",
+      "description": "Muzikálová opera, která se hned po premiéře stala jednou z nejúspěšnějších inscenací Divadla na Orlí.",
+      "sameAs": "https://www.youtube.com/watch?v=tz3enjp0IUo"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://aleskohout.com/#frankenstein",
+      "name": "Frankenstein – skutečný příběh",
+      "url": "https://aleskohout.com/#tvorba",
+      "image": "https://aleskohout.com/Photo/video-frankenstein.jpg",
+      "genre": "Muzikálová opera",
+      "datePublished": "2022-09-15",
+      "creator": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "inLanguage": "cs",
+      "description": "Píše se rok 1816 a Mary Wollstonecraft-Godwinová se potkává s vědcem, který si hrál na Boha. Muzikálová opera o zrodu nejslavnějšího hororového románu.",
+      "sameAs": "https://www.youtube.com/watch?v=QNsZ0VhNieI"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://aleskohout.com/#sonety-podoby-lasky",
+      "name": "Sonety – podoby lásky",
+      "url": "https://aleskohout.com/#tvorba",
+      "image": "https://aleskohout.com/Photo/video-sonety-podoby-lasky.jpg",
+      "genre": "Hudebně-divadelní projekt",
+      "datePublished": "2022-02-22",
+      "creator": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "inLanguage": "cs",
+      "description": "Kolik podob lásky se skrývá v poezii Williama Shakespeara? Projekt, který propojuje herectví, zpěv, tanec a přednes.",
+      "sameAs": "https://www.youtube.com/watch?v=Ys2y3DQOwuw"
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://aleskohout.com/#metronom",
+      "name": "Metro(nom)",
+      "url": "https://aleskohout.com/#tvorba",
+      "image": "https://aleskohout.com/Photo/video-metronom.jpg",
+      "genre": "Komorní muzikál",
+      "datePublished": "2022-10-20",
+      "creator": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "inLanguage": "cs",
+      "description": "Komorní muzikál o dvou lidech, které svedla dohromady stanice metra. Zůstat v zajetých kolejích, nebo se vydat do neznáma?",
+      "sameAs": "https://www.youtube.com/watch?v=WKs5z44StE8"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://aleskohout.com/#podcast-zivot-plus",
+      "name": "Život plus",
+      "url": "https://aleskohout.com/#moderovani",
+      "image": "https://aleskohout.com/Photo/podcast-zivot-plus.jpg",
+      "genre": "Podcast",
+      "inLanguage": "cs",
+      "description": "Otevřené rozhovory o tom, co přináší sám život: psychické zdraví, vztahy, identita a odvaha být sám sebou.",
+      "author": { "@id": "https://aleskohout.com/#ales-kohout" },
+      "sameAs": [
+        "https://open.spotify.com/show/2CXP5h3Nw7dZiyQEuGj8km",
+        "https://podcasts.apple.com/cz/podcast/%C5%BEivot-plus/id1572239658",
+        "https://ceskepodcasty.cz/podcast/zivot-plus"
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -286,15 +677,20 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
     <a href="#kontakt" data-cs="Kontakt" data-en="Contact">Kontakt</a>
   </div>
   <div class="nav-controls">
-    <button class="btn-icon" id="langBtn" title="Přepnout jazyk" aria-label="Switch language">EN</button>
-    <button class="btn-icon" id="themeBtn" title="Přepnout téma" aria-label="Toggle theme">☀</button>
+    <button class="btn-icon" id="langBtn"
+            title="Přepnout web do angličtiny" data-cs-title="Přepnout web do angličtiny" data-en-title="Switch the site to Czech"
+            aria-label="Přepnout web do angličtiny" data-cs-aria="Přepnout web do angličtiny" data-en-aria="Switch the site to Czech">EN</button>
+    <button class="btn-icon" id="themeBtn"
+            title="Přepnout mezi světlým a tmavým vzhledem" data-cs-title="Přepnout mezi světlým a tmavým vzhledem" data-en-title="Switch between light and dark mode"
+            aria-label="Přepnout mezi světlým a tmavým vzhledem" data-cs-aria="Přepnout mezi světlým a tmavým vzhledem" data-en-aria="Switch between light and dark mode">☀</button>
     <button class="btn-menu" id="menuBtn" type="button" aria-label="Otevřít menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Mobilní navigace">
+<div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Hlavní navigace"
+     data-cs-aria="Hlavní navigace" data-en-aria="Main navigation">
   <a href="#o-mne" data-cs="O mně" data-en="About">O mně</a>
   <a href="#tvorba" data-cs="Tvorba" data-en="Works">Tvorba</a>
   <a href="#galerie" data-cs="Média" data-en="Media">Média</a>
@@ -306,7 +702,7 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
 <section class="hero" id="uvod">
   <div class="hero-text fade-in">
     <div class="hero-eyebrow" data-cs="Herec · Skladatel · Pedagog" data-en="Actor · Composer · Educator">Herec · Skladatel · Pedagog</div>
-    <h1 class="hero-name">Aleš<br><em>Kohout</em></h1>
+    <h1 class="hero-name">Aleš<br><em>Kohout</em><span class="visually-hidden" data-cs=" – skladatel muzikálů, herec, režisér a moderátor" data-en=" – musical composer, actor, director and host"> – skladatel muzikálů, herec, režisér a moderátor</span></h1>
     <div class="hero-roles">
       <span class="role-tag" data-cs="Divadelní herec" data-en="Theatre actor">Divadelní herec</span>
       <span class="role-tag" data-cs="Režisér" data-en="Director">Režisér</span>
@@ -322,7 +718,8 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
   </div>
   <div class="hero-visual fade-in">
     <div class="hero-accent-line"></div>
-    <img src="Photo/Aleš Kohout.jpg" alt="Aleš Kohout"
+    <img src="Photo/ales-kohout.jpg" alt="Portrét Aleše Kohouta – skladatele muzikálových oper, herce a pedagoga JAMU"
+         width="1065" height="1600" fetchpriority="high" decoding="async"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;object-position:center 40%">
     <div style="position:absolute;bottom:2rem;left:2rem">
     </div>
@@ -370,60 +767,65 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
 
     <div class="work-card work-card--featured fade-in">
       <div class="work-thumb" data-video-id="e0xqo9Ghko0">
-        <img src="https://img.youtube.com/vi/e0xqo9Ghko0/maxresdefault.jpg" alt="Příběh utajené královny" loading="lazy">
-        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+        <img src="Photo/video-pribeh-utajene-kralovny.jpg" alt="Videoukázka z muzikálu Příběh utajené královny" width="1280" height="720" loading="lazy" decoding="async">
+        <button class="work-play-btn" aria-label="Přehrát ukázku z muzikálu Příběh utajené královny"
+                data-cs-aria="Přehrát ukázku z muzikálu Příběh utajené královny" data-en-aria="Play a clip from The Hidden Queen"><span>▶</span></button>
       </div>
       <div class="work-info">
         <div class="work-year" data-cs="Premiéra 10. 9. 2026 · Divadlo na Orlí" data-en="Premiere 10 Sep 2026 · Divadlo na Orlí">Premiéra 10. 9. 2026 · Divadlo na Orlí</div>
-        <div class="work-title" data-cs="Příběh utajené královny" data-en="The Hidden Queen">Příběh utajené královny</div>
+        <h3 class="work-title" data-cs="Příběh utajené královny" data-en="The Hidden Queen">Příběh utajené královny</h3>
         <p class="work-desc" data-cs="Muzikál inspirovaný skutečnými událostmi vzdává hold ženě, jejíž život byl protkán vášní, láskou, zradou i zázraky. Svůj klid nakonec nalezla daleko od královských sídel Velké Británie — v jihomoravském Blansku." data-en="A musical inspired by true events, paying tribute to a woman whose life was woven with passion, love, betrayal, and miracles. She finally found peace far from the royal seats of Great Britain — in the South Moravian town of Blansko.">Muzikál inspirovaný skutečnými událostmi vzdává hold ženě, jejíž život byl protkán vášní, láskou, zradou i zázraky. Svůj klid nakonec nalezla daleko od královských sídel Velké Británie — v jihomoravském Blansku.</p>
       </div>
     </div>
 
     <div class="work-card fade-in">
       <div class="work-thumb" data-video-id="QNsZ0VhNieI" data-video-list="PLE17M0JerCSWjiPUTqDpnb8nmbai1lROc">
-        <img src="https://img.youtube.com/vi/QNsZ0VhNieI/maxresdefault.jpg" alt="Frankenstein – skutečný příběh" loading="lazy">
-        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+        <img src="Photo/video-frankenstein.jpg" alt="Videoukázka z muzikálové opery Frankenstein – skutečný příběh" width="1280" height="720" loading="lazy" decoding="async">
+        <button class="work-play-btn" aria-label="Přehrát ukázku z muzikálové opery Frankenstein – skutečný příběh"
+                data-cs-aria="Přehrát ukázku z muzikálové opery Frankenstein – skutečný příběh" data-en-aria="Play a clip from Frankenstein – A True Story"><span>▶</span></button>
       </div>
       <div class="work-info">
         <div class="work-year" data-cs="Premiéra 15. 9. 2022 · Divadlo na Orlí" data-en="Premiere 15 Sep 2022 · Divadlo na Orlí">Premiéra 15. 9. 2022 · Divadlo na Orlí</div>
-        <div class="work-title" data-cs="Frankenstein – skutečný příběh" data-en="Frankenstein – A True Story">Frankenstein – skutečný příběh</div>
+        <h3 class="work-title" data-cs="Frankenstein – skutečný příběh" data-en="Frankenstein – A True Story">Frankenstein – skutečný příběh</h3>
         <p class="work-desc" data-cs="Píše se rok 1816 a Mary Wollstonecraft-Godwinová je svědkem dramatických událostí, které ji inspirují k napsání jejího nejslavnějšího románu. Setkává se s vědcem, který si hrál na Boha a byl odsouzen k věčnému utrpení." data-en="The year is 1816 and Mary Wollstonecraft Godwin witnesses dramatic events that inspire her to write her most famous novel. She encounters a scientist who played God and was condemned to eternal suffering.">Píše se rok 1816 a Mary Wollstonecraft-Godwinová je svědkem dramatických událostí, které ji inspirují k napsání jejího nejslavnějšího románu. Setkává se s vědcem, který si hrál na Boha a byl odsouzen k věčnému utrpení.</p>
       </div>
     </div>
 
     <div class="work-card fade-in">
       <div class="work-thumb" data-video-id="tz3enjp0IUo" data-video-list="PLE17M0JerCSV0N6ISnP2_szCcKmPMZwpC">
-        <img src="https://img.youtube.com/vi/tz3enjp0IUo/maxresdefault.jpg" alt="Anna Kareninová" loading="lazy">
-        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+        <img src="Photo/video-anna-kareninova.jpg" alt="Videoukázka z muzikálové opery Anna Kareninová" width="1280" height="720" loading="lazy" decoding="async">
+        <button class="work-play-btn" aria-label="Přehrát ukázku z muzikálové opery Anna Kareninová"
+                data-cs-aria="Přehrát ukázku z muzikálové opery Anna Kareninová" data-en-aria="Play a clip from Anna Karenina"><span>▶</span></button>
       </div>
       <div class="work-info">
         <div class="work-year" data-cs="Premiéra 20. 9. 2018 · Divadlo na Orlí" data-en="Premiere 20 Sep 2018 · Divadlo na Orlí">Premiéra 20. 9. 2018 · Divadlo na Orlí</div>
-        <div class="work-title" data-cs="Anna Kareninová" data-en="Anna Karenina">Anna Kareninová</div>
+        <h3 class="work-title" data-cs="Anna Kareninová" data-en="Anna Karenina">Anna Kareninová</h3>
         <p class="work-desc" data-cs="„Měl by člověk litovat toho, co udělal z lásky? Ne. Litovat by měl jen toho, co neudělal." Muzikálová opera, která se ihned po premiéře stala jednou z nejúspěšnějších inscenací Divadla na Orlí." data-en="&ldquo;Should one regret what one did for love? No — only what one did not do.&rdquo; A musical opera that immediately became one of the most celebrated productions at Divadlo na Orlí.">„Měl by člověk litovat toho, co udělal z lásky? Ne. Litovat by měl jen toho, co neudělal." Muzikálová opera, která se ihned po premiéře stala jednou z nejúspěšnějších inscenací Divadla na Orlí.</p>
       </div>
     </div>
 
     <div class="work-card fade-in">
       <div class="work-thumb" data-video-id="Ys2y3DQOwuw" data-video-list="PLE17M0JerCSUcqyURbyDrksKHF1w4MF40">
-        <img src="https://img.youtube.com/vi/Ys2y3DQOwuw/maxresdefault.jpg" alt="Sonety – podoby lásky" loading="lazy">
-        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+        <img src="Photo/video-sonety-podoby-lasky.jpg" alt="Videoukázka z projektu Sonety – podoby lásky" width="1280" height="720" loading="lazy" decoding="async">
+        <button class="work-play-btn" aria-label="Přehrát ukázku z projektu Sonety – podoby lásky"
+                data-cs-aria="Přehrát ukázku z projektu Sonety – podoby lásky" data-en-aria="Play a clip from Sonnets – shapes of love"><span>▶</span></button>
       </div>
       <div class="work-info">
         <div class="work-year" data-cs="Premiéra 22. 2. 2022 · Divadlo na Orlí" data-en="Premiere 22 Feb 2022 · Divadlo na Orlí">Premiéra 22. 2. 2022 · Divadlo na Orlí</div>
-        <div class="work-title" data-cs="Sonety – podoby lásky" data-en="Sonnets – shapes of love">Sonety – podoby lásky</div>
+        <h3 class="work-title" data-cs="Sonety – podoby lásky" data-en="Sonnets – shapes of love">Sonety – podoby lásky</h3>
         <p class="work-desc" data-cs="Kolik podob lásky lze najít v poezii Williama Shakespearea? Netradiční projekt propojující herectví, zpěv, tanec a přednes s výraznými pohybovými a vokálními prvky." data-en="How many forms of love can be found in Shakespeare's poetry? An unconventional project combining acting, singing, dance, and recitation with expressive movement and vocal elements.">Kolik podob lásky lze najít v poezii Williama Shakespearea? Netradiční projekt propojující herectví, zpěv, tanec a přednes s výraznými pohybovými a vokálními prvky.</p>
       </div>
     </div>
 
     <div class="work-card fade-in">
       <div class="work-thumb" data-video-id="WKs5z44StE8">
-        <img src="https://img.youtube.com/vi/WKs5z44StE8/maxresdefault.jpg" alt="Metro(nom)" loading="lazy">
-        <button class="work-play-btn" aria-label="Přehrát video"><span>▶</span></button>
+        <img src="Photo/video-metronom.jpg" alt="Videoukázka z komorního muzikálu Metro(nom)" width="1280" height="720" loading="lazy" decoding="async">
+        <button class="work-play-btn" aria-label="Přehrát ukázku z komorního muzikálu Metro(nom)"
+                data-cs-aria="Přehrát ukázku z komorního muzikálu Metro(nom)" data-en-aria="Play a clip from the chamber musical Metro(nom)"><span>▶</span></button>
       </div>
       <div class="work-info">
         <div class="work-year" data-cs="Premiéra 20. 10. 2022 · Divadlo na Orlí" data-en="Premiere 20 Oct 2022 · Divadlo na Orlí">Premiéra 20. 10. 2022 · Divadlo na Orlí</div>
-        <div class="work-title">Metro(nom)</div>
+        <h3 class="work-title">Metro(nom)</h3>
         <p class="work-desc" data-cs="Komorní muzikál sledující příběh dvou lidí, které svedla dohromady stanice metra. Zůstat v zajetých kolejích v rytmu neúprosného metronomu nebo se vydat do neznáma? Vsadit na náhodu nebo na osud?" data-en="A chamber musical following two people brought together by a metro station. Stay on the well-worn tracks to the beat of the relentless metronome, or venture into the unknown? Trust chance or destiny?">Komorní muzikál sledující příběh dvou lidí, které svedla dohromady stanice metra. Zůstat v zajetých kolejích v rytmu neúprosného metronomu nebo se vydat do neznáma? Vsadit na náhodu nebo na osud?</p>
       </div>
     </div>
@@ -470,42 +872,57 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
   <div class="section-label fade-in" data-cs="Poslechnout" data-en="Listen">Poslechnout</div>
   <h2 class="section-title fade-in" data-cs-html="Vybraná <em>hudba</em>" data-en-html="Selected <em>music</em>">Vybraná <em>hudba</em></h2>
   <div class="music-list">
-    <div class="music-item fade-in" data-video="bX4IM5B9Mwc" role="button" tabindex="0" aria-label="Přehrát Závěrečný souboj">
+    <div class="music-item fade-in" data-video="bX4IM5B9Mwc" role="button" tabindex="0"
+         aria-label="Přehrát skladbu Závěrečný souboj z muzikálové opery Frankenstein"
+         data-cs-aria="Přehrát skladbu Závěrečný souboj z muzikálové opery Frankenstein"
+         data-en-aria="Play the song Final duel from the musical opera Frankenstein">
       <span class="music-num">01</span>
       <div class="music-meta">
-        <div class="music-name" data-cs="Závěrečný souboj" data-en="Final duel">Závěrečný souboj</div>
+        <h3 class="music-name" data-cs="Závěrečný souboj" data-en="Final duel">Závěrečný souboj</h3>
         <div class="music-source" data-cs="Frankenstein – skutečný příběh · závěrečná scéna" data-en="Frankenstein – A True Story · final scene">Frankenstein – skutečný příběh · závěrečná scéna</div>
       </div>
       <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
     </div>
-    <div class="music-item fade-in" data-video="AuU8JeYFRp4" role="button" tabindex="0" aria-label="Přehrát Krutý mráz">
+    <div class="music-item fade-in" data-video="AuU8JeYFRp4" role="button" tabindex="0"
+         aria-label="Přehrát skladbu Krutý mráz z muzikálové opery Anna Kareninová"
+         data-cs-aria="Přehrát skladbu Krutý mráz z muzikálové opery Anna Kareninová"
+         data-en-aria="Play the song Cruel frost from the musical opera Anna Karenina">
       <span class="music-num">02</span>
       <div class="music-meta">
-        <div class="music-name" data-cs="Krutý mráz" data-en="Cruel frost">Krutý mráz</div>
+        <h3 class="music-name" data-cs="Krutý mráz" data-en="Cruel frost">Krutý mráz</h3>
         <div class="music-source" data-cs="Anna Kareninová · ústřední duet" data-en="Anna Karenina · central duet">Anna Kareninová · ústřední duet</div>
       </div>
       <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
     </div>
-    <div class="music-item fade-in" data-video="aQxM2JL7GNQ" role="button" tabindex="0" aria-label="Přehrát Ameliina kletba">
+    <div class="music-item fade-in" data-video="aQxM2JL7GNQ" role="button" tabindex="0"
+         aria-label="Přehrát skladbu Ameliina kletba z muzikálu Kráska a netvor"
+         data-cs-aria="Přehrát skladbu Ameliina kletba z muzikálu Kráska a netvor"
+         data-en-aria="Play the song Amelia's curse from the musical Beauty and the Beast">
       <span class="music-num">03</span>
       <div class="music-meta">
-        <div class="music-name" data-cs="Ameliina kletba" data-en="Amelia's curse">Ameliina kletba</div>
+        <h3 class="music-name" data-cs="Ameliina kletba" data-en="Amelia's curse">Ameliina kletba</h3>
         <div class="music-source" data-cs="Kráska a netvor · leitmotiv" data-en="Beauty and the Beast · leitmotif">Kráska a netvor · leitmotiv</div>
       </div>
       <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
     </div>
-    <div class="music-item fade-in" data-video="UDaQxmfajWw" role="button" tabindex="0" aria-label="Přehrát Hanebný ostrov">
+    <div class="music-item fade-in" data-video="UDaQxmfajWw" role="button" tabindex="0"
+         aria-label="Přehrát skladbu Hanebný ostrov z muzikálu Odsouzená Atlantida"
+         data-cs-aria="Přehrát skladbu Hanebný ostrov z muzikálu Odsouzená Atlantida"
+         data-en-aria="Play the song Infamous island from the musical Condemned Atlantis">
       <span class="music-num">04</span>
       <div class="music-meta">
-        <div class="music-name" data-cs="Hanebný ostrov" data-en="Infamous island">Hanebný ostrov</div>
+        <h3 class="music-name" data-cs="Hanebný ostrov" data-en="Infamous island">Hanebný ostrov</h3>
         <div class="music-source" data-cs="Odsouzená Atlantida · úvodní píseň" data-en="Condemned Atlantis · opening song">Odsouzená Atlantida · úvodní píseň</div>
       </div>
       <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
     </div>
-    <div class="music-item fade-in" data-video="KRJh_B9xu0M" role="button" tabindex="0" aria-label="Přehrát Můj milý Meineke">
+    <div class="music-item fade-in" data-video="KRJh_B9xu0M" role="button" tabindex="0"
+         aria-label="Přehrát skladbu Můj milý Meineke z muzikálu Příběh utajené královny"
+         data-cs-aria="Přehrát skladbu Můj milý Meineke z muzikálu Příběh utajené královny"
+         data-en-aria="Play the song My dear Meineke from the musical The Hidden Queen">
       <span class="music-num">05</span>
       <div class="music-meta">
-        <div class="music-name" data-cs="Můj milý Meineke" data-en="My dear Meineke">Můj milý Meineke</div>
+        <h3 class="music-name" data-cs="Můj milý Meineke" data-en="My dear Meineke">Můj milý Meineke</h3>
         <div class="music-source" data-cs="Příběh utajené královny · píseň" data-en="The Hidden Queen · song">Příběh utajené královny · píseň</div>
       </div>
       <button class="music-play" tabindex="-1" aria-hidden="true">▶</button>
@@ -519,21 +936,21 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
   <div class="section-label fade-in" data-cs="Tím vším jsem byl" data-en="What I've been">Tím vším jsem byl</div>
   <h2 class="section-title fade-in" data-cs-html="Foto<em>galerie</em>" data-en-html="Photo<em>gallery</em>">Foto<em>galerie</em></h2>
   <div class="gallery-grid">
-    <a href="#" class="gallery-item fade-in" aria-label="Footloose"><img src="Photo/Footloose.jpg" alt="Footloose"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Producenti"><img src="Photo/Producenti.jpg" alt="Producenti" style="object-position:right center"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Probuzení jara"><img src="Photo/Probuzení jara.jpg" alt="Probuzení jara"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Liduschka Baarová"><img src="Photo/Liduschka Baarova.jpg" alt="Liduschka Baarová"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Adéla ještě nevečeřela"><img src="Photo/Adéla ještě nevečeřela.jpg" alt="Adéla ještě nevečeřela"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Někdo to rád horké"><img src="Photo/Někdo to rád horké.jpg" alt="Někdo to rád horké"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Zahrada divů"><img src="Photo/Zahrada divů.jpeg" alt="Zahrada divů"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Na flámu"><img src="Photo/Na flámu.jpg" alt="Na flámu"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Noc na Karlštejně"><img src="Photo/Noc na Karlštejně.jpg" alt="Noc na Karlštejně"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Divá Bára"><img src="Photo/Divá Bára.jpg" alt="Divá Bára"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Děj se co děj"><img src="Photo/Děj se co děj.jpg" alt="Děj se co děj"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Růže z Argentiny"><img src="Photo/Růže z Argentiny.jpg" alt="Růže z Argentiny"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Kdyby tisíc klarinetů"><img src="Photo/Kdyby tisic klarinetu.jpg" alt="Kdyby tisíc klarinetů"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Frankenstein"><img src="Photo/Frankenstein.jpg" alt="Frankenstein"></a>
-    <a href="#" class="gallery-item fade-in" aria-label="Metronom"><img src="Photo/Metronom.jpg" alt="Metronom" style="object-position:center 20%"></a>
+    <a href="Photo/ales-kohout-footloose.jpg" class="gallery-item fade-in" data-caption="Footloose" aria-label="Otevřít fotku z muzikálu Footloose" data-cs-aria="Otevřít fotku z muzikálu Footloose" data-en-aria="Open photo from the musical Footloose"><img src="Photo/ales-kohout-footloose.jpg" alt="Aleš Kohout v muzikálu Footloose" width="1600" height="1062" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-producenti.jpg" class="gallery-item fade-in" data-caption="Producenti" aria-label="Otevřít fotku z muzikálu Producenti" data-cs-aria="Otevřít fotku z muzikálu Producenti" data-en-aria="Open photo from the musical The Producers"><img src="Photo/ales-kohout-producenti.jpg" alt="Aleš Kohout v muzikálu Producenti" width="1600" height="1062" loading="lazy" decoding="async" style="object-position:right center"></a>
+    <a href="Photo/ales-kohout-probuzeni-jara.jpg" class="gallery-item fade-in" data-caption="Probuzení jara" aria-label="Otevřít fotku z muzikálu Probuzení jara" data-cs-aria="Otevřít fotku z muzikálu Probuzení jara" data-en-aria="Open photo from the musical Spring Awakening"><img src="Photo/ales-kohout-probuzeni-jara.jpg" alt="Aleš Kohout v muzikálu Probuzení jara" width="1600" height="1040" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-liduschka-baarova.jpg" class="gallery-item fade-in" data-caption="Liduschka Baarová" aria-label="Otevřít fotku z inscenace Liduschka Baarová" data-cs-aria="Otevřít fotku z inscenace Liduschka Baarová" data-en-aria="Open photo from the production Liduschka Baarová"><img src="Photo/ales-kohout-liduschka-baarova.jpg" alt="Aleš Kohout v inscenaci Liduschka Baarová" width="1600" height="1068" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-adela-jeste-nevecerela.jpg" class="gallery-item fade-in" data-caption="Adéla ještě nevečeřela" aria-label="Otevřít fotku z muzikálu Adéla ještě nevečeřela" data-cs-aria="Otevřít fotku z muzikálu Adéla ještě nevečeřela" data-en-aria="Open photo from the musical Adéla ještě nevečeřela"><img src="Photo/ales-kohout-adela-jeste-nevecerela.jpg" alt="Aleš Kohout v muzikálu Adéla ještě nevečeřela" width="1000" height="684" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-nekdo-to-rad-horke.jpg" class="gallery-item fade-in" data-caption="Někdo to rád horké" aria-label="Otevřít fotku z muzikálu Někdo to rád horké" data-cs-aria="Otevřít fotku z muzikálu Někdo to rád horké" data-en-aria="Open photo from the musical Sugar"><img src="Photo/ales-kohout-nekdo-to-rad-horke.jpg" alt="Aleš Kohout v muzikálu Někdo to rád horké" width="1000" height="664" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-zahrada-divu.jpg" class="gallery-item fade-in" data-caption="Zahrada divů" aria-label="Otevřít fotku z inscenace Zahrada divů" data-cs-aria="Otevřít fotku z inscenace Zahrada divů" data-en-aria="Open photo from the production Zahrada divů"><img src="Photo/ales-kohout-zahrada-divu.jpg" alt="Aleš Kohout v inscenaci Zahrada divů" width="1200" height="800" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-na-flamu.jpg" class="gallery-item fade-in" data-caption="Na flámu" aria-label="Otevřít fotku z inscenace Na flámu" data-cs-aria="Otevřít fotku z inscenace Na flámu" data-en-aria="Open photo from the production Na flámu"><img src="Photo/ales-kohout-na-flamu.jpg" alt="Aleš Kohout v inscenaci Na flámu" width="1600" height="1067" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-noc-na-karlstejne.jpg" class="gallery-item fade-in" data-caption="Noc na Karlštejně" aria-label="Otevřít fotku z muzikálu Noc na Karlštejně" data-cs-aria="Otevřít fotku z muzikálu Noc na Karlštejně" data-en-aria="Open photo from the musical Noc na Karlštejně"><img src="Photo/ales-kohout-noc-na-karlstejne.jpg" alt="Aleš Kohout v muzikálu Noc na Karlštejně" width="1000" height="664" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-diva-bara.jpg" class="gallery-item fade-in" data-caption="Divá Bára" aria-label="Otevřít fotku z inscenace Divá Bára" data-cs-aria="Otevřít fotku z inscenace Divá Bára" data-en-aria="Open photo from the production Divá Bára"><img src="Photo/ales-kohout-diva-bara.jpg" alt="Aleš Kohout v inscenaci Divá Bára" width="999" height="681" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-dej-se-co-dej.jpg" class="gallery-item fade-in" data-caption="Děj se co děj" aria-label="Otevřít fotku z inscenace Děj se co děj" data-cs-aria="Otevřít fotku z inscenace Děj se co děj" data-en-aria="Open photo from the production Děj se co děj"><img src="Photo/ales-kohout-dej-se-co-dej.jpg" alt="Aleš Kohout v inscenaci Děj se co děj" width="1600" height="1062" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-ruze-z-argentiny.jpg" class="gallery-item fade-in" data-caption="Růže z Argentiny" aria-label="Otevřít fotku z inscenace Růže z Argentiny" data-cs-aria="Otevřít fotku z inscenace Růže z Argentiny" data-en-aria="Open photo from the production Růže z Argentiny"><img src="Photo/ales-kohout-ruze-z-argentiny.jpg" alt="Aleš Kohout v inscenaci Růže z Argentiny" width="1000" height="722" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-kdyby-tisic-klarinetu.jpg" class="gallery-item fade-in" data-caption="Kdyby tisíc klarinetů" aria-label="Otevřít fotku z muzikálu Kdyby tisíc klarinetů" data-cs-aria="Otevřít fotku z muzikálu Kdyby tisíc klarinetů" data-en-aria="Open photo from the musical Kdyby tisíc klarinetů"><img src="Photo/ales-kohout-kdyby-tisic-klarinetu.jpg" alt="Aleš Kohout v muzikálu Kdyby tisíc klarinetů" width="2048" height="1335" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-frankenstein.jpg" class="gallery-item fade-in" data-caption="Frankenstein – skutečný příběh" aria-label="Otevřít fotku z muzikálové opery Frankenstein – skutečný příběh" data-cs-aria="Otevřít fotku z muzikálové opery Frankenstein – skutečný příběh" data-en-aria="Open photo from the musical opera Frankenstein – A True Story"><img src="Photo/ales-kohout-frankenstein.jpg" alt="Scéna z muzikálové opery Frankenstein – skutečný příběh, kterou složil Aleš Kohout" width="1600" height="881" loading="lazy" decoding="async"></a>
+    <a href="Photo/ales-kohout-metronom.jpg" class="gallery-item fade-in" data-caption="Metro(nom)" aria-label="Otevřít fotku z komorního muzikálu Metro(nom)" data-cs-aria="Otevřít fotku z komorního muzikálu Metro(nom)" data-en-aria="Open photo from the chamber musical Metro(nom)"><img src="Photo/ales-kohout-metronom.jpg" alt="Scéna z komorního muzikálu Metro(nom), který složil Aleš Kohout" width="720" height="480" loading="lazy" decoding="async" style="object-position:center 20%"></a>
   </div>
 </section>
 
@@ -546,37 +963,43 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
     <a href="https://vysocina.rozhlas.cz/rockovy-muzikal-odsouzena-atlantida-se-po-15-letech-vraci-na-prkna-9387758" class="press-card fade-in" target="_blank" rel="noopener">
       <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
       <time class="press-date" datetime="2025-01-07">7. 1. 2025</time>
-      <h3 class="press-title" data-cs="Odsouzená Atlantida se vrací po patnácti letech" data-en="Condemned Atlantis returns after fifteen years">Odsouzená Atlantida se vrací po patnácti letech</h3>
+      <h3 class="press-title" data-cs="Rocková Atlantida ožívá po patnácti letech" data-en="The rock Atlantis comes back to life after fifteen years">Rocková Atlantida ožívá po patnácti letech</h3>
+      <p class="press-perex" data-cs="Muzikál, který jsem složil, se vrací na jeviště. Co se s ním za tu dobu stalo a proč přichází zrovna teď?" data-en="A musical I composed is returning to the stage. What happened to it in the meantime, and why is it coming back now?">Muzikál, který jsem složil, se vrací na jeviště. Co se s ním za tu dobu stalo a proč přichází zrovna teď?</p>
       <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
     </a>
     <a href="https://ceskepodcasty.cz/podcast/zivot-plus/ales-kohout-dusi-basnik-zivotem-optimista" class="press-card fade-in" target="_blank" rel="noopener">
       <div class="press-source" data-cs="Podcast Život plus" data-en="Podcast Život plus">Podcast Život plus</div>
       <time class="press-date" datetime="2024-11-11">11. 11. 2024</time>
-      <h3 class="press-title" data-cs="Osobní rozhovor o profesním a soukromém životě" data-en="A personal conversation about professional and personal life">Osobní rozhovor o profesním a soukromém životě</h3>
+      <h3 class="press-title" data-cs="Duší básník, životem optimista" data-en="A poet at heart, an optimist in life">Duší básník, životem optimista</h3>
+      <p class="press-perex" data-cs="Nejotevřenější povídání, jaké jsem kdy dal. O práci, o soukromí i o tom, kde beru chuť tvořit dál." data-en="The most open conversation I&rsquo;ve ever given — about work, about private life and about where I find the urge to keep creating.">Nejotevřenější povídání, jaké jsem kdy dal. O práci, o soukromí i o tom, kde beru chuť tvořit dál.</p>
       <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
     </a>
     <a href="https://www.zaktv.cz/archiv/interview/7810.html" class="press-card fade-in" target="_blank" rel="noopener">
       <div class="press-source" data-cs="ZAK TV Plzeň" data-en="ZAK TV Pilsen">ZAK TV Plzeň</div>
       <time class="press-date" datetime="2023-06-21">21. 6. 2023</time>
-      <h3 class="press-title" data-cs="O Frankensteinovi a působení na JAMU" data-en="On Frankenstein and working at JAMU">O Frankensteinovi a působení na JAMU</h3>
+      <h3 class="press-title" data-cs="Od Frankensteina ke studentům JAMU" data-en="From Frankenstein to the students at JAMU">Od Frankensteina ke studentům JAMU</h3>
+      <p class="press-perex" data-cs="Jak vzniká muzikálová opera podle slavného románu a jaké to je učit muzikál v Brně." data-en="How a musical opera based on the famous novel takes shape, and what it&rsquo;s like to teach musical theatre in Brno.">Jak vzniká muzikálová opera podle slavného románu a jaké to je učit muzikál v Brně.</p>
       <span class="press-btn" data-cs="Přehrát" data-en="Watch">Přehrát</span>
     </a>
     <a href="https://plzen.rozhlas.cz/nekdejsi-solista-plzenskeho-muzikalu-se-na-par-dni-vraci-z-brnenske-jamu-zpet-do-9005979" class="press-card fade-in" target="_blank" rel="noopener">
       <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
       <time class="press-date" datetime="2023-06-02">2. 6. 2023</time>
-      <h3 class="press-title" data-cs="O muzikálu Frankenstein a hudbě" data-en="On the Frankenstein musical and music">O muzikálu Frankenstein a hudbě</h3>
+      <h3 class="press-title" data-cs="Na pár dní zpátky v Plzni – i s Frankensteinem" data-en="Back in Pilsen for a few days &mdash; with Frankenstein in tow">Na pár dní zpátky v Plzni – i s Frankensteinem</h3>
+      <p class="press-perex" data-cs="Jak se píše hudba pro divadlo a jaké je vracet se na scénu, kterou mám pod kůží." data-en="How music for the stage gets written, and what it feels like to come back to a theatre I know inside out.">Jak se píše hudba pro divadlo a jaké je vracet se na scénu, kterou mám pod kůží.</p>
       <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
     </a>
     <a href="https://plzen.rozhlas.cz/ales-kohout-7541360" class="press-card fade-in" target="_blank" rel="noopener">
       <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
       <time class="press-date" datetime="2019-06-18">18. 6. 2019</time>
-      <h3 class="press-title" data-cs="O odchodu z Tylova divadla po sedmi sezonách" data-en="On leaving Tyl Theatre after seven seasons">O odchodu z Tylova divadla po sedmi sezonách</h3>
+      <h3 class="press-title" data-cs="Proč jsem po sedmi sezonách odešel z Tylova divadla" data-en="Why I left Tyl Theatre after seven seasons">Proč jsem po sedmi sezonách odešel z Tylova divadla</h3>
+      <p class="press-perex" data-cs="O loučení s jistotou angažmá, o rolích, které se mnou zůstaly, a o tom, kam mě to táhlo dál." data-en="On giving up the safety of a permanent ensemble, on the roles that stayed with me, and on where I was headed next.">O loučení s jistotou angažmá, o rolích, které se mnou zůstaly, a o tom, kam mě to táhlo dál.</p>
       <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
     </a>
     <a href="https://vysocina.rozhlas.cz/muzikalovy-herec-ales-kohout-nikdy-jsem-moc-dobre-nehybal-na-studia-jsem-se-7789564" class="press-card fade-in" target="_blank" rel="noopener">
       <div class="press-source" data-cs="Český rozhlas" data-en="Czech Radio">Český rozhlas</div>
       <time class="press-date" datetime="2019-03-19">19. 3. 2019</time>
-      <h3 class="press-title" data-cs="O rozmanitém uměleckém působení" data-en="On his diverse artistic activities">O rozmanitém uměleckém působení</h3>
+      <h3 class="press-title" data-cs="Herec, zpěvák, skladatel i moderátor" data-en="Actor, singer, composer and host">Herec, zpěvák, skladatel i moderátor</h3>
+      <p class="press-perex" data-cs="Jak se to všechno dá zvládat najednou, kde to celé začalo a co mají ty profese společného." data-en="How all of it can be done at once, where it all started and what those professions have in common.">Jak se to všechno dá zvládat najednou, kde to celé začalo a co mají ty profese společného.</p>
       <span class="press-btn" data-cs="Poslechnout" data-en="Listen">Poslechnout</span>
     </a>
   </div>
@@ -587,46 +1010,95 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
 <section id="moderovani">
   <div class="mod-layout">
 
-    <!-- Vlevo: label + nadpis + foto -->
-    <div class="mod-left fade-in">
-      <div class="section-label" data-cs="Moderování" data-en="Hosting">Moderování</div>
-      <h2 class="section-title" data-cs-html="Hlas, který <em>spojuje</em>" data-en-html="A voice that <em>connects</em>">Hlas, který <em>spojuje</em></h2>
-      <div class="mod-left-photo">
-        <img src="Photo/Aleš Kohout moderátor.jpg" alt="Aleš Kohout – moderátor" style="object-position:top center">
+    <!-- Levý sloupec: nadpis + foto (na mobilu se díky display:contents rozpadne) -->
+    <div class="mod-col-left">
+      <div class="mod-head fade-in">
+        <div class="section-label" data-cs="Moderování" data-en="Hosting">Moderování</div>
+        <h2 class="section-title" data-cs-html="Hlas, který <em>spojuje</em>" data-en-html="A voice that <em>connects</em>">Hlas, který <em>spojuje</em></h2>
       </div>
+      <figure class="mod-photo fade-in">
+        <div class="mod-photo-frame">
+          <img src="Photo/ales-kohout-moderator.jpg" alt="Aleš Kohout moderuje živou akci s mikrofonem v ruce" width="1024" height="683" loading="lazy" decoding="async">
+        </div>
+      </figure>
     </div>
 
-    <!-- Vpravo: intro + karty klientů + podcast -->
-    <div class="fade-in">
-      <p class="mod-intro" data-cs="Moderování pro mě není jen mluvení před lidmi. Je to schopnost naslouchat, reagovat, udržet pozornost a navázat s publikem skutečný kontakt. Opírám se přitom o zkušenosti z divadla, rádia i živých akcí." data-en="For me, hosting is about more than simply speaking in front of an audience. It is about listening, responding, keeping people engaged, and creating a genuine connection with the audience. I draw on my experience from theatre, radio, and live events.">Moderování pro mě není jen mluvení před lidmi. Je to schopnost naslouchat, reagovat, udržet pozornost a navázat s publikem skutečný kontakt. Opírám se přitom o zkušenosti z divadla, rádia i živých akcí.</p>
-      <div class="mod-clients-grid">
-        <div class="mod-client">
-          <div class="mod-client-name">HitRadio City</div>
-          <div class="mod-client-role" data-cs="Moderátor zpravodajství" data-en="News presenter">Moderátor zpravodajství</div>
+    <!-- Pravý sloupec: co moderuji + reference + poptávka, pod tím vlastní podcast -->
+    <div class="mod-col-right">
+      <div class="mod-body fade-in">
+        <p class="mod-intro" data-cs="Moderování pro mě znamená především naslouchat, pohotově reagovat, udržet pozornost a navázat s publikem skutečný kontakt. Vycházím přitom ze zkušeností z divadla, rádia a moderování kulturních a společenských akcí." data-en="For me, hosting means above all listening, reacting quickly, holding people's attention and making a genuine connection with the audience. I draw on my experience from theatre, radio and hosting cultural and social events.">Moderování pro mě znamená především naslouchat, pohotově reagovat, udržet pozornost a navázat s publikem skutečný kontakt. Vycházím přitom ze zkušeností z divadla, rádia a moderování kulturních a společenských akcí.</p>
+
+        <div class="mod-subhead" data-cs="Co moderuji" data-en="What I host">Co moderuji</div>
+        <!-- TODO Aleš: typy akcí uber nebo doplň podle toho, co skutečně chceš dělat -->
+        <div class="mod-tags">
+          <span class="role-tag" data-cs="Konference" data-en="Conferences">Konference</span>
+          <span class="role-tag" data-cs="Firemní akce" data-en="Corporate events">Firemní akce</span>
+          <span class="role-tag" data-cs="Galavečery" data-en="Gala evenings">Galavečery</span>
+          <span class="role-tag" data-cs="Panelové diskuse" data-en="Panel discussions">Panelové diskuse</span>
+          <span class="role-tag" data-cs="Festivaly a koncerty" data-en="Festivals &amp; concerts">Festivaly a koncerty</span>
+          <span class="role-tag" data-cs="Charitativní akce" data-en="Charity events">Charitativní akce</span>
+          <span class="role-tag" data-cs="Podcasty a rozhovory" data-en="Podcasts &amp; interviews">Podcasty a rozhovory</span>
         </div>
-        <div class="mod-client">
-          <div class="mod-client-name">Rádio Krokodýl</div>
-          <div class="mod-client-role" data-cs="Moderátor · redaktor" data-en="Host · editor">Moderátor · redaktor</div>
+
+        <div class="mod-subhead" data-cs="Kde jsem moderoval" data-en="Where I have hosted">Kde jsem moderoval</div>
+        <div class="mod-clients-grid">
+          <div class="mod-client">
+            <span class="mod-client-tag" data-cs="Rádio" data-en="Radio">Rádio</span>
+            <h3 class="mod-client-name">HitRadio City</h3>
+            <p class="mod-client-role" data-cs="Moderátor zpravodajství" data-en="News presenter">Moderátor zpravodajství</p>
+            <!-- Volitelně doplnit roky: <span class="mod-client-meta">2015–2018</span> -->
+          </div>
+          <div class="mod-client">
+            <span class="mod-client-tag" data-cs="Rádio" data-en="Radio">Rádio</span>
+            <h3 class="mod-client-name">Rádio Krokodýl</h3>
+            <p class="mod-client-role" data-cs="Moderátor a redaktor" data-en="Host and editor">Moderátor a redaktor</p>
+          </div>
+          <div class="mod-client">
+            <span class="mod-client-tag" data-cs="Konference" data-en="Conferences">Konference</span>
+            <h3 class="mod-client-name">Masarykova univerzita</h3>
+            <p class="mod-client-role" data-cs="Moderování konferencí Lékařské a Ekonomicko-správní fakulty" data-en="Hosting conferences for the Faculty of Medicine and the Faculty of Economics and Administration">Moderování konferencí Lékařské a Ekonomicko-správní fakulty</p>
+          </div>
+          <a class="mod-client" href="#podcast-zivot-plus">
+            <span class="mod-client-tag" data-cs="Podcast" data-en="Podcast">Podcast</span>
+            <h3 class="mod-client-name">Dům světla Praha</h3>
+            <p class="mod-client-role" data-cs="Moderátor podcastu Život plus" data-en="Host of the Život plus podcast">Moderátor podcastu Život plus</p>
+            <span class="mod-client-meta" data-cs="Poslechnout ↓" data-en="Listen ↓">Poslechnout ↓</span>
+          </a>
         </div>
-        <div class="mod-client">
-          <div class="mod-client-name">Masarykova univerzita</div>
-          <div class="mod-client-role" data-cs="Lékařská a Ekonomicko-správní fakulta · moderování konferencí" data-en="Faculty of Medicine &amp; Economics · conference hosting">Lékařská a Ekonomicko-správní fakulta · moderování konferencí</div>
-        </div>
-        <div class="mod-client">
-          <div class="mod-client-name">Dům světla Praha</div>
-          <div class="mod-client-role" data-cs="Moderátor podcastu Život plus" data-en="Host of Život plus podcast">Moderátor podcastu Život plus</div>
+
+        <div class="mod-cta">
+          <a class="btn-primary"
+             href="mailto:kohout.ales@gmail.com?subject=Popt%C3%A1vka%20moderov%C3%A1n%C3%AD&amp;body=Dobr%C3%BD%20den%2C%0D%0A%0D%0Am%C3%A1m%20z%C3%A1jem%20o%20moderov%C3%A1n%C3%AD.%0D%0A%0D%0ATyp%20akce%3A%0D%0ADatum%3A%0D%0AM%C3%ADsto%3A%0D%0AP%C5%99edpokl%C3%A1dan%C3%BD%20rozsah%3A%0D%0A%0D%0AD%C4%9Bkuji"
+             data-cs-href="mailto:kohout.ales@gmail.com?subject=Popt%C3%A1vka%20moderov%C3%A1n%C3%AD&amp;body=Dobr%C3%BD%20den%2C%0D%0A%0D%0Am%C3%A1m%20z%C3%A1jem%20o%20moderov%C3%A1n%C3%AD.%0D%0A%0D%0ATyp%20akce%3A%0D%0ADatum%3A%0D%0AM%C3%ADsto%3A%0D%0AP%C5%99edpokl%C3%A1dan%C3%BD%20rozsah%3A%0D%0A%0D%0AD%C4%9Bkuji"
+             data-en-href="mailto:kohout.ales@gmail.com?subject=Hosting%20enquiry&amp;body=Hello%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20about%20hosting%20an%20event.%0D%0A%0D%0AType%20of%20event%3A%0D%0ADate%3A%0D%0AVenue%3A%0D%0AExpected%20scope%3A%0D%0A%0D%0AThank%20you"
+             data-cs="Poptat moderování" data-en="Enquire about hosting">Poptat moderování</a>
         </div>
       </div>
-      <div class="mod-podcast">
-        <div class="mod-podcast-name" data-cs="Podcast Život plus" data-en="Podcast Život plus">Podcast Život plus</div>
+
+      <div class="mod-podcast fade-in" id="podcast-zivot-plus">
+        <div class="mod-subhead" data-cs="Moderuji podcast" data-en="Podcast I host">Moderuji podcast</div>
+        <h3 class="mod-podcast-name">Život plus</h3>
         <p class="mod-podcast-desc" data-cs="Podcast Život plus rozebírá témata, která přináší sám život: psychické zdraví, vztahy, identita, odvaha být sám sebou. Otevřené rozhovory se zajímavými osobnostmi pro všechny, kteří se nebojí mluvit o tom, na čem záleží." data-en="The Život plus Podcast explores topics that life itself brings: mental health, relationships, identity, and the courage to be yourself. Open conversations with fascinating personalities for everyone who isn't afraid to talk about what truly matters.">Podcast Život plus rozebírá témata, která přináší sám život: psychické zdraví, vztahy, identita, odvaha být sám sebou. Otevřené rozhovory se zajímavými osobnostmi pro všechny, kteří se nebojí mluvit o tom, na čem záleží.</p>
-        <div class="platform-links" style="margin-bottom:1.25rem">
+        <div class="spotify-wrap">
+          <button class="spotify-facade" id="spotifyFacade" type="button"
+                  data-src="https://open.spotify.com/embed/show/2CXP5h3Nw7dZiyQEuGj8km?utm_source=generator"
+                  aria-label="Přehrát podcast Život plus na Spotify"
+                  data-cs-aria="Přehrát podcast Život plus na Spotify" data-en-aria="Play the Život plus podcast on Spotify">
+            <img class="spotify-facade-cover" src="Photo/podcast-zivot-plus.jpg" alt="Obal podcastu Život plus, který moderuje Aleš Kohout" width="320" height="320" loading="lazy" decoding="async">
+            <span class="spotify-facade-text">
+              <span class="spotify-facade-title">Život plus</span>
+              <span class="spotify-facade-sub" data-cs="Podcast · moderuje Aleš Kohout" data-en="Podcast · hosted by Aleš Kohout">Podcast · moderuje Aleš Kohout</span>
+              <span class="spotify-facade-brand">Spotify</span>
+            </span>
+            <span class="spotify-facade-play" aria-hidden="true">▶</span>
+          </button>
+        </div>
+        <p class="spotify-note" data-cs="Přehrávač Spotify se načte až po kliknutí." data-en="The Spotify player loads only after you click.">Přehrávač Spotify se načte až po kliknutí.</p>
+        <div class="mod-platform-note" data-cs="Poslechnout také na" data-en="Also listen on">Poslechnout také na</div>
+        <div class="platform-links">
           <a href="https://open.spotify.com/show/2CXP5h3Nw7dZiyQEuGj8km" class="platform-link" target="_blank" rel="noopener">Spotify</a>
           <a href="https://podcasts.apple.com/cz/podcast/%C5%BEivot-plus/id1572239658" class="platform-link" target="_blank" rel="noopener">Apple Podcasts</a>
           <a href="https://ceskepodcasty.cz/podcast/zivot-plus" class="platform-link" target="_blank" rel="noopener">České podcasty</a>
-        </div>
-        <div class="spotify-wrap">
-          <iframe src="https://open.spotify.com/embed/show/2CXP5h3Nw7dZiyQEuGj8km?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Podcast Život plus"></iframe>
         </div>
       </div>
     </div>
@@ -643,39 +1115,53 @@ footer{padding:2rem 3rem;border-top:1px solid var(--border);display:flex;align-i
     <p class="contact-tagline fade-in" data-cs="Pro spolupráci, moderování i další umělecké projekty jsem k dispozici." data-en="Available for collaboration, hosting engagements and further artistic projects.">Pro spolupráci, moderování i další umělecké projekty jsem k dispozici.</p>
     <a href="mailto:kohout.ales@gmail.com" class="contact-email-big fade-in">kohout.ales@gmail.com</a>
     <div class="social-text-row fade-in">
-      <a href="https://www.facebook.com/aleskohoutofficial" class="social-text-link" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.instagram.com/kohoutales/" class="social-text-link" target="_blank" rel="noopener">Instagram</a>
-      <a href="http://linkedin.com/in/aleš-kohout-8a7916a0" class="social-text-link" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.youtube.com/user/aleskohout1" class="social-text-link" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.facebook.com/aleskohoutofficial" class="social-text-link" target="_blank" rel="me noopener">Facebook</a>
+      <a href="https://www.instagram.com/kohoutales/" class="social-text-link" target="_blank" rel="me noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/ale%C5%A1-kohout-8a7916a0" class="social-text-link" target="_blank" rel="me noopener">LinkedIn</a>
+      <a href="https://www.youtube.com/user/aleskohout1" class="social-text-link" target="_blank" rel="me noopener">YouTube</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span class="footer-name">Aleš Kohout</span>
-  <div class="footer-credits">
-    <span class="footer-copy" id="footer-year"></span>
-    <span class="footer-copy" data-cs="Fotografie: Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava" data-en="Photography: Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archive of J. K. Tyl Theatre Pilsen and Silesian Theatre Opava">Fotografie: Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava</span>
-    <span class="footer-copy" data-cs="Autoři videí: Igor Altstern, Táňa Vaněčková, Aleš Kohout." data-en="Video authors: Igor Altstern, Táňa Vaněčková, Aleš Kohout.">Autoři videí: Igor Altstern, Táňa Vaněčková, Aleš Kohout.</span>
+  <div class="footer-top">
+    <div class="footer-col">
+      <span class="footer-name">Aleš <span>Kohout</span></span>
+      <span class="footer-year" id="footer-year"></span>
+    </div>
+    <div class="footer-col">
+      <span class="footer-label" data-cs="Fotografie" data-en="Photography">Fotografie</span>
+      <span class="footer-copy" data-cs="Hana Ptáčková, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava" data-en="Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archive of J. K. Tyl Theatre Pilsen and Silesian Theatre Opava">Hana Ptáčková, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava</span>
+    </div>
+    <div class="footer-col">
+      <span class="footer-label" data-cs="Video" data-en="Video">Video</span>
+      <span class="footer-copy" data-cs="Igor Altstern, Táňa Vaněčková, Aleš Kohout" data-en="Igor Altstern, Táňa Vaněčková, Aleš Kohout">Igor Altstern, Táňa Vaněčková, Aleš Kohout</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-label" data-cs="Soukromí" data-en="Privacy">Soukromí</span>
+    <p class="footer-privacy" data-cs="Tento web nepoužívá cookies ani žádné analytické či marketingové nástroje a nesbírá o vás žádná data. Písma i náhledy videí jsou uložené přímo zde, takže se při prohlížení nenačítá nic z cizích serverů. Přehrávače YouTube a Spotify se spustí až po vašem kliknutí – teprve tím se připojíte ke službě třetí strany s vlastními pravidly." data-en="This site uses no cookies and no analytics or marketing tools, and collects no data about you. Fonts and video thumbnails are hosted here, so nothing is loaded from external servers while you browse. The YouTube and Spotify players start only after you click – only then do you connect to a third-party service with its own terms.">Tento web nepoužívá cookies ani žádné analytické či marketingové nástroje a nesbírá o vás žádná data. Písma i náhledy videí jsou uložené přímo zde, takže se při prohlížení nenačítá nic z cizích serverů. Přehrávače YouTube a Spotify se spustí až po vašem kliknutí – teprve tím se připojíte ke službě třetí strany s vlastními pravidly.</p>
   </div>
 </footer>
 
 <!-- LIGHTBOX – Fotogalerie -->
-<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerie">
-  <button class="lb-close" id="lb-close" aria-label="Zavřít">✕</button>
-  <button class="lb-prev" id="lb-prev" aria-label="Předchozí foto">&#8249;</button>
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Fotogalerie – prohlížení fotek"
+     data-cs-aria="Fotogalerie – prohlížení fotek" data-en-aria="Photo gallery – image viewer">
+  <button class="lb-close" id="lb-close" aria-label="Zavřít galerii" data-cs-aria="Zavřít galerii" data-en-aria="Close gallery">✕</button>
+  <button class="lb-prev" id="lb-prev" aria-label="Předchozí fotka" data-cs-aria="Předchozí fotka" data-en-aria="Previous photo">&#8249;</button>
   <div class="lb-wrap">
     <img id="lb-img" src="" alt="">
     <div id="lb-caption" class="lb-caption"></div>
     <div id="lb-counter" class="lb-counter"></div>
   </div>
-  <button class="lb-next" id="lb-next" aria-label="Další foto">&#8250;</button>
+  <button class="lb-next" id="lb-next" aria-label="Další fotka" data-cs-aria="Další fotka" data-en-aria="Next photo">&#8250;</button>
 </div>
 
 <!-- MODAL – YouTube přehrávač -->
-<div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Přehrávač">
+<div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Přehrávač videa"
+     data-cs-aria="Přehrávač videa" data-en-aria="Video player">
   <div class="modal-box">
-    <button class="modal-close" id="modal-close" aria-label="Zavřít">✕</button>
+    <button class="modal-close" id="modal-close" aria-label="Zavřít přehrávač" data-cs-aria="Zavřít přehrávač" data-en-aria="Close player">✕</button>
     <div id="modal-body"></div>
   </div>
 </div>
@@ -694,8 +1180,8 @@ function lbShow(i) {
   const item = lbItems[lbCur];
   const img  = item.querySelector('img');
   lbImg.src  = img ? img.getAttribute('src') : '';
-  lbImg.alt  = item.getAttribute('aria-label') || '';
-  lbCap.textContent   = item.getAttribute('aria-label') || '';
+  lbImg.alt  = img ? (img.getAttribute('alt') || '') : '';
+  lbCap.textContent   = item.dataset.caption || '';
   lbCount.textContent = (lbCur + 1) + ' / ' + lbItems.length;
 }
 function lbOpen(i) {
@@ -791,6 +1277,9 @@ function setMenu(open) {
   mobileMenu.classList.toggle('open', open);
   menuBtn.classList.toggle('open', open);
   menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  menuBtn.setAttribute('aria-label',
+    open ? (en ? 'Close menu' : 'Zavřít menu')
+         : (en ? 'Open menu'  : 'Otevřít menu'));
 }
 
 menuBtn.addEventListener('click', function() {
@@ -813,6 +1302,24 @@ function updateSpotifyTheme(isDark) {
   });
 }
 
+// ── Spotify – načte se až po kliknutí, do té doby žádný požadavek na třetí stranu ──
+const spotifyFacade = document.getElementById('spotifyFacade');
+if (spotifyFacade) {
+  spotifyFacade.addEventListener('click', () => {
+    const wrap = spotifyFacade.closest('.spotify-wrap');
+    const ifr  = document.createElement('iframe');
+    ifr.src    = spotifyFacade.dataset.src + (dark ? '&theme=0' : '');
+    ifr.width  = '100%';
+    ifr.height = '152';
+    ifr.title  = 'Podcast Život plus';
+    ifr.setAttribute('frameborder', '0');
+    ifr.setAttribute('allowfullscreen', '');
+    ifr.allow  = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+    wrap.innerHTML = '';
+    wrap.appendChild(ifr);
+  });
+}
+
 themeBtn.addEventListener('click', () => {
   dark = !dark;
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : '');
@@ -820,10 +1327,39 @@ themeBtn.addEventListener('click', () => {
   updateSpotifyTheme(dark);
 });
 
-langBtn.addEventListener('click', () => {
-  en = !en;
+// SEO texty pro obě jazykové verze – co uvidí člověk ve vyhledávači
+// a v náhledu odkazu na sociálních sítích.
+const SEO = {
+  cs: {
+    locale: 'cs_CZ',
+    url:    'https://aleskohout.com/',
+    title:  'Aleš Kohout – skladatel muzikálů, herec a moderátor | JAMU Brno',
+    social: 'Aleš Kohout – skladatel muzikálů, herec a moderátor',
+    desc:   'Skládám a režíruji muzikálové opery – Anna Kareninová, Frankenstein, Příběh utajené královny. Hraju, moderuji a vedu ateliér muzikálového herectví na JAMU.',
+    imgAlt: 'Aleš Kohout – skladatel muzikálů, herec a moderátor'
+  },
+  en: {
+    locale: 'en_US',
+    url:    'https://aleskohout.com/?lang=en',
+    title:  'Aleš Kohout – Musical Composer, Actor and Host | JAMU Brno',
+    social: 'Aleš Kohout – Musical Composer, Actor and Host',
+    desc:   'I compose and direct musical operas – Anna Karenina, Frankenstein, The Hidden Queen. I act, host events and lead the Musical Theatre Acting Studio at JAMU.',
+    imgAlt: 'Aleš Kohout – musical composer, actor and host'
+  }
+};
+
+function setMeta(selector, value) {
+  const el = document.querySelector(selector);
+  if (el) el.setAttribute('content', value);
+}
+
+function applyLang(toEn, updateUrl) {
+  en = toEn;
+  const seo = en ? SEO.en : SEO.cs;
+
   langBtn.textContent = en ? 'CS' : 'EN';
   langBtn.classList.toggle('lang-active', en);
+
   document.querySelectorAll('[data-cs],[data-en]').forEach(el => {
     const t = en ? el.dataset.en : el.dataset.cs;
     if (t) el.textContent = t;
@@ -832,8 +1368,49 @@ langBtn.addEventListener('click', () => {
     const t = en ? el.dataset.enHtml : el.dataset.csHtml;
     if (t) el.innerHTML = t;
   });
+  // Popisky pro odečítače obrazovky a tooltipy
+  document.querySelectorAll('[data-cs-aria],[data-en-aria]').forEach(el => {
+    const t = en ? el.dataset.enAria : el.dataset.csAria;
+    if (t) el.setAttribute('aria-label', t);
+  });
+  document.querySelectorAll('[data-cs-title],[data-en-title]').forEach(el => {
+    const t = en ? el.dataset.enTitle : el.dataset.csTitle;
+    if (t) el.setAttribute('title', t);
+  });
+  // Odkazy s jazykovou variantou (např. předvyplněný e-mail poptávky)
+  document.querySelectorAll('[data-cs-href],[data-en-href]').forEach(el => {
+    const t = en ? el.dataset.enHref : el.dataset.csHref;
+    if (t) el.setAttribute('href', t);
+  });
+  setMenu(mobileMenu.classList.contains('open'));
+
+  // Titulek, popisek a náhled odkazu
   document.documentElement.lang = en ? 'en' : 'cs';
-});
+  document.title = seo.title;
+  setMeta('meta[name="description"]',        seo.desc);
+  setMeta('meta[property="og:title"]',       seo.social);
+  setMeta('meta[property="og:description"]', seo.desc);
+  setMeta('meta[property="og:image:alt"]',   seo.imgAlt);
+  setMeta('meta[property="og:locale"]',      seo.locale);
+  setMeta('meta[property="og:locale:alternate"]', en ? SEO.cs.locale : SEO.en.locale);
+  setMeta('meta[property="og:url"]',         seo.url);
+  setMeta('meta[name="twitter:title"]',      seo.social);
+  setMeta('meta[name="twitter:description"]', seo.desc);
+  setMeta('meta[name="twitter:image:alt"]',  seo.imgAlt);
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute('href', seo.url);
+
+  // Každá jazyková verze má vlastní adresu, aby ji Google mohl zaindexovat
+  if (updateUrl) {
+    const target = en ? '?lang=en' : location.pathname;
+    history.replaceState(null, '', target + location.hash);
+  }
+}
+
+langBtn.addEventListener('click', () => applyLang(!en, true));
+
+// Otevřel někdo web s ?lang=en (nebo přišel z anglického výsledku Googlu)?
+if (new URLSearchParams(location.search).get('lang') === 'en') applyLang(true, false);
 
 
 // ── Rok v patičce ─────────────────────────────────────────────────────────

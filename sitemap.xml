@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://aleskohout.com/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+
+    <xhtml:link rel="alternate" hreflang="cs" href="https://aleskohout.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aleskohout.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aleskohout.com/"/>
+
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout.jpg</image:loc>
+      <image:title>Portrét Aleše Kohouta – skladatele muzikálových oper, herce a pedagoga JAMU</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-moderator.jpg</image:loc>
+      <image:title>Aleš Kohout moderuje živou akci s mikrofonem v ruce</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-footloose.jpg</image:loc>
+      <image:title>Aleš Kohout v muzikálu Footloose</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-producenti.jpg</image:loc>
+      <image:title>Aleš Kohout v muzikálu Producenti</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-probuzeni-jara.jpg</image:loc>
+      <image:title>Aleš Kohout v muzikálu Probuzení jara</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-liduschka-baarova.jpg</image:loc>
+      <image:title>Aleš Kohout v inscenaci Liduschka Baarová</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-adela-jeste-nevecerela.jpg</image:loc>
+      <image:title>Aleš Kohout v muzikálu Adéla ještě nevečeřela</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-nekdo-to-rad-horke.jpg</image:loc>
+      <image:title>Aleš Kohout v muzikálu Někdo to rád horké</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-zahrada-divu.jpg</image:loc>
+      <image:title>Aleš Kohout v inscenaci Zahrada divů</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-na-flamu.jpg</image:loc>
+      <image:title>Aleš Kohout v inscenaci Na flámu</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-noc-na-karlstejne.jpg</image:loc>
+      <image:title>Aleš Kohout v muzikálu Noc na Karlštejně</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-diva-bara.jpg</image:loc>
+      <image:title>Aleš Kohout v inscenaci Divá Bára</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-dej-se-co-dej.jpg</image:loc>
+      <image:title>Aleš Kohout v inscenaci Děj se co děj</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-ruze-z-argentiny.jpg</image:loc>
+      <image:title>Aleš Kohout v inscenaci Růže z Argentiny</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-kdyby-tisic-klarinetu.jpg</image:loc>
+      <image:title>Aleš Kohout v muzikálu Kdyby tisíc klarinetů</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-frankenstein.jpg</image:loc>
+      <image:title>Scéna z muzikálové opery Frankenstein – skutečný příběh, kterou složil Aleš Kohout</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/ales-kohout-metronom.jpg</image:loc>
+      <image:title>Scéna z komorního muzikálu Metro(nom), který složil Aleš Kohout</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://aleskohout.com/Photo/podcast-zivot-plus.jpg</image:loc>
+      <image:title>Obal podcastu Život plus, který moderuje Aleš Kohout</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://aleskohout.com/?lang=en</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+
+    <xhtml:link rel="alternate" hreflang="cs" href="https://aleskohout.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aleskohout.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aleskohout.com/"/>
+  </url>
+</urlset>

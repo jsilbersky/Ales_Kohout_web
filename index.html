@@ -314,6 +314,11 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-i
 .work-card--featured .work-info{padding:2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;gap:.75rem}
 .work-card--featured .work-title{font-size:clamp(1.4rem,2.5vw,1.9rem)}
 .work-card--featured .work-desc{font-size:.95rem;max-width:46ch}
+/* Odkaz na samostatný web inscenace (zatím jen u featured karty) */
+.work-link{align-self:flex-start;margin-top:.35rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);text-decoration:none;padding-bottom:.25rem;border-bottom:1px solid var(--border2);transition:color .2s,border-color .2s}
+.work-link::after{content:'→';margin-left:.5rem;display:inline-block;transition:transform .2s}
+.work-link:hover{color:var(--text);border-color:var(--accent)}
+.work-link:hover::after{transform:translateX(3px)}
 @media(max-width:900px){.work-card--featured{grid-template-columns:1fr}.work-card--featured .work-thumb{aspect-ratio:16/9;min-height:unset}.work-card--featured .work-info{padding:1.25rem;gap:.4rem}}
 
 /* MUSIC */
@@ -391,7 +396,8 @@ a.mod-client:hover{border-color:var(--accent2);transform:translateY(-2px)}
 .mod-client-role{font-size:.85rem;font-weight:300;color:var(--text2);line-height:1.55}
 .mod-client-meta{display:block;font-size:.72rem;letter-spacing:.06em;color:var(--text3);margin-top:.65rem;transition:color .2s}
 a.mod-client:hover .mod-client-meta{color:var(--accent)}
-.mod-cta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.mod-cta{display:flex;flex-direction:column;align-items:flex-start;gap:1rem}
+.mod-cta-note{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);line-height:1.7}
 .mod-podcast{border-top:1px solid var(--border);margin-top:2.75rem;padding-top:2.5rem;scroll-margin-top:calc(var(--nav-h) + 1.5rem)}
 .mod-podcast-name{font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--text);margin-bottom:.6rem;line-height:1.2}
 .mod-podcast-desc{font-size:.95rem;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:1.5rem}
@@ -413,7 +419,6 @@ a.mod-client:hover .mod-client-meta{color:var(--accent)}
 .spotify-facade-brand{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);margin-top:.5rem}
 .spotify-facade-play{flex-shrink:0;width:52px;height:52px;margin-right:.75rem;border-radius:50%;background:#1db954;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;padding-left:4px;box-shadow:0 2px 12px rgba(0,0,0,.28);transition:transform .2s}
 .spotify-facade:hover .spotify-facade-play{transform:scale(1.07)}
-.spotify-note{font-size:.72rem;color:var(--text3);margin-top:.75rem}
 @media(max-width:560px){
   .spotify-facade{gap:.9rem;padding:.85rem}
   .spotify-facade-cover{width:96px;height:96px}
@@ -472,7 +477,9 @@ footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var
   .mod-body{order:2}
   .mod-photo{order:3}
   .mod-podcast{order:4;margin-top:0;padding-top:2rem}
+  /* Na mobilu přiblížíme na moderátora – ořízne se prázdný sál i člověk vpravo */
   .mod-photo-frame{aspect-ratio:3/2}
+  .mod-photo-frame img{transform:scale(1.8);transform-origin:32% 31%}
 
   section{padding:3.5rem 1.5rem}
   footer{padding:3rem 1.5rem 2rem}
@@ -488,7 +495,6 @@ footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var
   .about-stats{grid-template-columns:1fr}
   .press-grid{grid-template-columns:1fr}
   .mod-clients-grid{grid-template-columns:1fr}
-  .mod-cta{flex-direction:column;align-items:flex-start}
   .modal-box{padding:1.5rem}
 }
 
@@ -565,6 +571,7 @@ footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var
       "@id": "https://aleskohout.com/#pribeh-utajene-kralovny",
       "name": "Příběh utajené královny",
       "url": "https://aleskohout.com/#tvorba",
+      "sameAs": "https://pribehutajenekralovny.com/",
       "startDate": "2026-09-10T19:00:00+02:00",
       "endDate": "2026-09-10T21:30:00+02:00",
       "eventStatus": "https://schema.org/EventScheduled",
@@ -778,6 +785,10 @@ footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var
         <div class="work-year" data-cs="Premiéra 10. 9. 2026 · Divadlo na Orlí" data-en="Premiere 10 Sep 2026 · Divadlo na Orlí">Premiéra 10. 9. 2026 · Divadlo na Orlí</div>
         <h3 class="work-title" data-cs="Příběh utajené královny" data-en="The Hidden Queen">Příběh utajené královny</h3>
         <p class="work-desc" data-cs="Muzikál inspirovaný skutečnými událostmi vzdává hold ženě, jejíž život byl protkán vášní, láskou, zradou i zázraky. Svůj klid nakonec nalezla daleko od královských sídel Velké Británie — v jihomoravském Blansku." data-en="A musical inspired by true events, paying tribute to a woman whose life was woven with passion, love, betrayal, and miracles. She finally found peace far from the royal seats of Great Britain — in the South Moravian town of Blansko.">Muzikál inspirovaný skutečnými událostmi vzdává hold ženě, jejíž život byl protkán vášní, láskou, zradou i zázraky. Svůj klid nakonec nalezla daleko od královských sídel Velké Británie — v jihomoravském Blansku.</p>
+        <a href="https://pribehutajenekralovny.com/" class="work-link" target="_blank" rel="noopener"
+           aria-label="Oficiální web muzikálu Příběh utajené královny"
+           data-cs-aria="Oficiální web muzikálu Příběh utajené královny" data-en-aria="Official website of the musical The Hidden Queen"
+           data-cs="Web muzikálu" data-en="Musical website">Web muzikálu</a>
       </div>
     </div>
 
@@ -1070,11 +1081,9 @@ footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var
         </div>
 
         <div class="mod-cta">
-          <a class="btn-primary"
-             href="mailto:kohout.ales@gmail.com?subject=Popt%C3%A1vka%20moderov%C3%A1n%C3%AD&amp;body=Dobr%C3%BD%20den%2C%0D%0A%0D%0Am%C3%A1m%20z%C3%A1jem%20o%20moderov%C3%A1n%C3%AD.%0D%0A%0D%0ATyp%20akce%3A%0D%0ADatum%3A%0D%0AM%C3%ADsto%3A%0D%0AP%C5%99edpokl%C3%A1dan%C3%BD%20rozsah%3A%0D%0A%0D%0AD%C4%9Bkuji"
-             data-cs-href="mailto:kohout.ales@gmail.com?subject=Popt%C3%A1vka%20moderov%C3%A1n%C3%AD&amp;body=Dobr%C3%BD%20den%2C%0D%0A%0D%0Am%C3%A1m%20z%C3%A1jem%20o%20moderov%C3%A1n%C3%AD.%0D%0A%0D%0ATyp%20akce%3A%0D%0ADatum%3A%0D%0AM%C3%ADsto%3A%0D%0AP%C5%99edpokl%C3%A1dan%C3%BD%20rozsah%3A%0D%0A%0D%0AD%C4%9Bkuji"
-             data-en-href="mailto:kohout.ales@gmail.com?subject=Hosting%20enquiry&amp;body=Hello%2C%0D%0A%0D%0AI%20would%20like%20to%20enquire%20about%20hosting%20an%20event.%0D%0A%0D%0AType%20of%20event%3A%0D%0ADate%3A%0D%0AVenue%3A%0D%0AExpected%20scope%3A%0D%0A%0D%0AThank%20you"
-             data-cs="Poptat moderování" data-en="Enquire about hosting">Poptat moderování</a>
+          <span class="mod-cta-note" data-cs="Hledáte moderátora pro svou akci? Napište mi." data-en="Looking for a host for your event? Get in touch.">Hledáte moderátora pro svou akci? Napište mi.</span>
+          <a class="btn-primary" href="#kontakt"
+             data-cs="Kontaktovat" data-en="Contact me">Kontaktovat</a>
         </div>
       </div>
 
@@ -1096,7 +1105,6 @@ footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var
             <span class="spotify-facade-play" aria-hidden="true">▶</span>
           </button>
         </div>
-        <p class="spotify-note" data-cs="Přehrávač Spotify se načte až po kliknutí." data-en="The Spotify player loads only after you click.">Přehrávač Spotify se načte až po kliknutí.</p>
         <div class="mod-platform-note" data-cs="Poslechnout také na" data-en="Also listen on">Poslechnout také na</div>
         <div class="platform-links">
           <a href="https://open.spotify.com/show/2CXP5h3Nw7dZiyQEuGj8km" class="platform-link" target="_blank" rel="noopener">Spotify</a>
@@ -1134,11 +1142,11 @@ footer{padding:4rem 3rem 2.5rem;border-top:1px solid var(--border);max-width:var
     </div>
     <div class="footer-col">
       <span class="footer-label" data-cs="Fotografie" data-en="Photography">Fotografie</span>
-      <span class="footer-copy" data-cs="Hana Ptáčková, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava" data-en="Hana Ptáčková, Tomáš Chlapečka, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archive of J. K. Tyl Theatre Pilsen and Silesian Theatre Opava">Hana Ptáčková, Pavlína Taubingerová, Jiří Karmasín, Hana Slichová, archiv Divadla J. K. Tyla Plzeň a Slezského divadla Opava</span>
+      <span class="footer-copy" data-cs="Archiv Divadla J. K. Tyla Plzeň, Slezského divadla Opava a Divadla na Orlí Brno" data-en="Archive of J. K. Tyl Theatre Pilsen, Silesian Theatre Opava and Divadlo na Orlí Brno">Archiv Divadla J. K. Tyla Plzeň, Slezského divadla Opava a Divadla na Orlí Brno</span>
     </div>
     <div class="footer-col">
       <span class="footer-label" data-cs="Video" data-en="Video">Video</span>
-      <span class="footer-copy" data-cs="Igor Altstern, Táňa Vaněčková, Aleš Kohout" data-en="Igor Altstern, Táňa Vaněčková, Aleš Kohout">Igor Altstern, Táňa Vaněčková, Aleš Kohout</span>
+      <span class="footer-copy" data-cs="Igor Altstern, Aleš Kohout" data-en="Igor Altstern, Aleš Kohout">Igor Altstern, Aleš Kohout</span>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1262,7 +1270,8 @@ document.querySelectorAll('.work-thumb[data-video-id]').forEach(thumb => {
     thumb.appendChild(ifr);
   };
   btn.addEventListener('click', e => { e.stopPropagation(); doEmbed(); });
-  thumb.closest('.work-card').addEventListener('click', doEmbed);
+  // Klik kdekoli na kartě spustí video – kromě odkazů uvnitř (např. web muzikálu)
+  thumb.closest('.work-card').addEventListener('click', e => { if (e.target.closest('a')) return; doEmbed(); });
 });
 
 // ── Hudba – YouTube player v modalu ──────────────────────────────────────
